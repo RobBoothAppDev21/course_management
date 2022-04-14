@@ -1,4 +1,5 @@
 require 'csv'
+# require 'Date'
 # require 'pry-byebug' # binding.pry
 
 class CourseParser
@@ -27,8 +28,6 @@ class CourseParser
   end
 
   def extract_quarter
-    # quarter_year = course["Quarter"].split(' ')
-    # quarter_year[0]
     quarter = clean_quarter_year
     quarter[0]
   end
@@ -36,15 +35,13 @@ class CourseParser
   def extract_year
     year = clean_quarter_year
     year[1]
-    # quarter_year = course["Quarter"].split(' ')
-    # quarter_year[1]
   end
 
   def clean_day_time
     course['MeetDayTime']
   end
 
-  def extract_start_time 
+  def extract_start_time
     clean_day_time.split(' ')[1].split('-')[0]
   end
 
@@ -52,13 +49,58 @@ class CourseParser
     clean_day_time.split(' ')[1].split('-')[1]
   end
 
-  def extract_day
-    days = clean_day_time.split(' ')[0]
-    if [' ', nil].include(days)
-      false
-    else
-
+  def days_of_week
+    days_hash = {}
+    %w[SU M T W TH F S].each_with_index do |day, index|
+      days_hash[day] = Date::DAYNAMES[index]
     end
+    days_hash
+  end
+
+  def clean_day
+    days_hash = days_of_week
+    holder = []
+    days = clean_day_time.split(' ')[0]
+    return holder if [' ', nil].include?(days)
+
+    return holder << days_hash[days] if days.length == 1 || %w[SU TH].include?(days)
+
+    case days
+    when 'MW'
+      %w[M W].each { |day| holder << days_hash[day] }
+    when 'TTH'
+      %w[T TH].each { |day| holder << days_hash[day] }
+    end
+
+    holder
+  end
+
+  def extract_sunday
+    clean_day.include?('Sunday')
+  end
+
+  def extract_monday
+    clean_day.include?('Monday')
+  end
+
+  def extract_tuesday
+    clean_day.include?('Tuesday')
+  end
+
+  def extract_wednesday
+    clean_day.include?('Wednesday')
+  end
+
+  def extract_thursday
+    clean_day.include?('Thursday')
+  end
+
+  def extract_friday
+    clean_day.include?('Friday')
+  end
+
+  def extract_saturday
+    clean_day.include?('Saturday')
   end
 
   def extract_building
@@ -67,6 +109,17 @@ class CourseParser
 
   def extract_room
     course['Location']
+  end
+
+  def extract_credits
+    credits = course['Note'].match(/\b5\d{1}\s[a-zA-z]{4,5}\b/) if course['Note']
+    return 100 if credits.nil?
+
+    50 if ['50 unit', '50 units'].include? credits[0].downcase
+  end
+
+  def extract_program
+    course['Program']
   end
 
   # def clean_instructor(*instructors)

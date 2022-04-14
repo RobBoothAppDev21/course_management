@@ -15,10 +15,11 @@ class CreateCourses < ActiveRecord::Migration[7.0]
       t.boolean :saturday, default: false
       t.string :start_time
       t.string :end_time
-      t.string :building
-      t.string :room
-      t.integer :credits, default: 0
+      t.string :building, default: 'TBA'
+      t.string :room, default: 'TBA'
+      t.integer :credits, default: 100
       t.string :syllabus
+      t.string :program
 
       t.timestamps
     end
