@@ -2,11 +2,11 @@ require 'csv'
 # require 'pry-byebug'
 
 class InstructorParser
-  attr_reader :details, :name
+  attr_reader :name, :details
 
-  def initialize(hash)
-    @details = hash
-    @name = hash.first[0]
+  def initialize(name, details)
+    @name = name
+    @details = details
   end
 
   def clean_name
@@ -23,18 +23,18 @@ class InstructorParser
   end
 
   def extract_title
-    @details[name][:title]
+    @details[:title]
   end
 
   def extract_department
-    @details[name][:department]
+    @details[:department]
   end
 
   def extract_phone_number
-    @details[name][:phone_number]
+    @details[:phone_number]
   end
 
   def extract_email
-    @details[name][:email]
+    @details[:email]
   end
 end

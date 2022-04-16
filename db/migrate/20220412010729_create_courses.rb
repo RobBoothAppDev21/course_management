@@ -2,8 +2,8 @@ class CreateCourses < ActiveRecord::Migration[7.0]
   def change
     create_table :courses do |t|
       t.string :title
-      t.integer :number
-      t.integer :section
+      t.string :number
+      t.string :section
       t.string :year
       t.string :quarter
       t.boolean :sunday, default: false

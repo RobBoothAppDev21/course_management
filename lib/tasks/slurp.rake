@@ -1,8 +1,11 @@
+require 'csv'
+# require 'pry-byebug'
+
 namespace :slurp do
   desc 'TODO'
   task courses: :environment do
 
-    require 'csv'
+    # require 'csv'
 
     course_headers = %w[Quarter Section Title Program Instructor1 Instructor2 Instructor3
                         Instructor4 MeetDayTime Building Location Prerequisites Syllabus Note]
@@ -48,39 +51,39 @@ namespace :slurp do
     instructor_csv = CSV.parse(instructor_text, encoding: 'UTF-8')
     instructor_csv.shift
 
-    professors = Hash.new { |h, k| h[k] = {} }
-    csv.each_with_index do |row, index|
+    instructors = Hash.new { |h, k| h[k] = {} }
+    instructor_csv.each_with_index do |instr_details, index|
       remainder = index % 4
       if remainder.zero?
-        instr_name = row[0].strip
-        professors[instr_name][:title] = row[2]
+        instr_name = instr_details[0].strip
+        instructors[instr_name][:title] = instr_details[2]
       else
-        instr_hash = professors[csv[index - remainder][0].strip]
+        instr_key = instructors[instructor_csv[index - remainder][0].strip]
         case remainder
         when 1
-          instr_hash[:department] = row[2]
+          instr_key[:department] = instr_details[2]
         when 2
-          instr_hash[:phone_number] = row[2]
+          instr_key[:phone_number] = instr_details[2]
         when 3
-          instr_hash[:email] = row[2]
+          instr_key[:email] = instr_details[2]
         end
       end
     end
 
-    professors.each do |prof_details|
-      y = InstructorParser.new(prof_details)
-      professor = Professor.new
-      professor.first = y.extract_first_name
-      professor.last = y.extract_last_name
-      professor.title = y.extract_title_name
-      professor.department = y.extract_department_name
-      professor.phone_number = y.extract_phone_number_name
-      professor.email = y.extract_email_name
-      # professor.save
+    instructors.each_pair do |prof_name, prof_details|
+      y = InstructorParser.new(prof_name, prof_details)
+      instructor = Instructor.new
+      instructor.first_name = y.extract_first_name
+      instructor.last_name = y.extract_last_name
+      instructor.title = y.extract_title
+      instructor.department = y.extract_department
+      instructor.phone_number = y.extract_phone_number
+      instructor.email = y.extract_email
+      instructor.save
 
-      p "SAVED: Professor #{first.capitalize} #{last.capitalize}"
+      p "SAVED: Instructor #{instructor.first_name.capitalize} #{instructor.last_name.capitalize}"
     end
 
-    p "There are #{Professor.count} rows saved to the professor database"
+    p "There are #{Instructor.count} rows saved to the instructor database"
   end
 end
