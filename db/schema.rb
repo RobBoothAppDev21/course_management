@@ -10,9 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_16_015811) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_17_040058) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "course_instructors", force: :cascade do |t|
+    t.bigint "course_id", null: false
+    t.bigint "instructor_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_course_instructors_on_course_id"
+    t.index ["instructor_id"], name: "index_course_instructors_on_instructor_id"
+  end
 
   create_table "courses", force: :cascade do |t|
     t.string "title"
@@ -42,11 +51,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_16_015811) do
     t.string "first_name"
     t.string "last_name"
     t.string "title"
-    t.string "department"
+    t.string "department", default: "Faculty"
     t.string "phone_number"
     t.string "email"
+    t.string "academic_area", default: "TBD"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "course_instructors", "courses"
+  add_foreign_key "course_instructors", "instructors"
 end

@@ -122,43 +122,11 @@ class CourseParser
     course['Program']
   end
 
-  # def clean_instructor(*instructors)
-  #   all_instructors = []
-  #   instructors.each do |instructor|
-  #     all_instructors << instructor if instructor
-  #   end
-  #   @instructors = all_instructors
-  # end
-
-  # def clean_meeting_date_time(meeting_date_time)
-  #   if [' ', nil].include?(meeting_date_time) # meeting_date_time == " " || meeting_date_time == nil
-  #     @day = 'blank'
-  #     @start_time = 'blank'
-  #     @end_time = 'blank'
-  #   else
-  #     day_time = meeting_date_time.split(' ')
-  #     clean_meet_days(day_time)
-  #     clean_meet_time(day_time)
-  #   end
-  # end
-
-  # def clean_meet_days(day_time)
-  #   days_string = day_time[0]
-  #   @days = case days_string
-  #           when 'MW'
-  #             %w[M W]
-  #           when 'TTH'
-  #             %w[T TH]
-  #           else
-  #             'TBD'
-  #           end
-  # end
-
-  # def clean_meet_time(time)
-  #   split_time = time[1].split('-')
-  #   start_time = split_time[0]
-  #   end_time = split_time[1]
-  #   @start_time = DateTime.strptime(start_time, '%H:%M%p')
-  #   @end_time = DateTime.strptime(end_time, '%H:%M%p')
-  # end
+  def instructors_arr
+    all_instructors = []
+    4.times do |i|
+      all_instructors << course["Instructor#{i + 1}"].strip unless course["Instructor#{i + 1}"].nil?
+    end
+    all_instructors
+  end
 end

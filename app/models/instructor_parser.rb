@@ -35,6 +35,17 @@ class InstructorParser
   end
 
   def extract_email
-    @details[:email]
+    @details[:email].downcase
+  end
+
+  def extract_academic_area
+    @details[:academic_area]
   end
 end
+
+
+# test_course.instructors_arr.each do |name|
+#   last_name, first_name = name.sub(",", "").split
+#   instr = Instructor.find_by(first_name: first_name, last_name: last_name)
+#   instr.id
+# end

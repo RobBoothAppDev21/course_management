@@ -14,6 +14,7 @@ namespace :slurp do
     courses_csv = CSV.parse(course_text, headers: course_headers, encoding: 'UTF-8')
     courses_csv.delete(0)
 
+    holder = []
     courses_csv.each do |row|
       x = CourseParser.new(row)
       course = Course.new
@@ -36,18 +37,36 @@ namespace :slurp do
       course.credits = x.extract_credits
       course.program = x.extract_program
       # course.syllabus = x.extract_syllabus
-      course.save
+      # course.save
 
-      p "SAVED: #{course.title} #{course.number}-#{course.section}"
+      # p "SAVED: #{course.title} #{course.number}-#{course.section}"
+      x.instructors_arr.each do |name|
+        last_name, first_name = name.sub(',', '').split
+        instr = Instructor.find_by(first_name: first_name, last_name: last_name)
+        if instr.nil?
+          holder << "#{first_name} #{last_name}"
+          # p "#{first_name} #{last_name}: #{course.number}-#{course.section}"
+          # p instr
+        end
+        # ci = CourseInstructor.new course_id: course.id, instructor_id: instr.id
+        # if ci.valid?
+        #   ci.save
+        #   p 'Course and Instructor relationship saved'
+        # else
+        #   p 'Did not save'
+        # end
+      end
     end
+    p holder.uniq
 
-    puts "There are now #{Course.count} rows saved in courses table"
+    # puts "There are now #{Course.count} rows saved in courses table"
+    # puts "There are now #{CourseInstructor.count} rows saved in CourseInstructor table"
   end
 
   desc 'TODO'
   task instructors: :environment do
 
-    instructor_text = File.read(Rails.root.join('lib', 'csvs', '20220415_booth_faculty.csv'))
+    instructor_text = File.read(Rails.root.join('lib', 'csvs', '20220416_booth_faculty.csv'))
     instructor_csv = CSV.parse(instructor_text, encoding: 'UTF-8')
     instructor_csv.shift
 
@@ -61,7 +80,12 @@ namespace :slurp do
         instr_key = instructors[instructor_csv[index - remainder][0].strip]
         case remainder
         when 1
-          instr_key[:department] = instr_details[2]
+          # instr_key[:department] = instr_details[2]
+          if instr_details[1][1] == 'Department'
+            instr_key[:department] = instr_details[2]
+          else
+            instr_key[:academic_area] = instr_details[2]
+          end
         when 2
           instr_key[:phone_number] = instr_details[2]
         when 3
@@ -79,9 +103,10 @@ namespace :slurp do
       instructor.department = y.extract_department
       instructor.phone_number = y.extract_phone_number
       instructor.email = y.extract_email
-      instructor.save
-
-      p "SAVED: Instructor #{instructor.first_name.capitalize} #{instructor.last_name.capitalize}"
+      instructor.academic_area = y.extract_academic_area
+      # instructor.save
+      binding.pry
+      # p "SAVED: Instructor #{instructor.first_name.capitalize} #{instructor.last_name.capitalize}"
     end
 
     p "There are #{Instructor.count} rows saved to the instructor database"
