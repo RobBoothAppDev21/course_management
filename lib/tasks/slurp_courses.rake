@@ -5,8 +5,6 @@ namespace :slurp do
   desc 'TODO'
   task courses: :environment do
 
-    # require 'csv'
-
     course_headers = %w[Quarter Section Title Program Instructor1 Instructor2 Instructor3
                         Instructor4 MeetDayTime Building Location Prerequisites Syllabus Note]
 
@@ -58,13 +56,7 @@ namespace :slurp do
           last_name = full_name[0]
           first_name = full_name[1].strip
         end
-        # binding.pry
         instr = Instructor.find_by(first_name: first_name, last_name: last_name)
-        # if instr.nil?
-          # holder << name #"#{first_name} #{last_name}"
-          # p "#{first_name} #{last_name}: #{course.number}-#{course.section}"
-          # p instr
-        # end
         ci = CourseInstructor.new course_id: course.id, instructor_id: instr.id
         if ci.valid?
           ci.save
@@ -74,7 +66,6 @@ namespace :slurp do
         end
       end
     end
-    # p holder.uniq
 
     puts "There are now #{Course.count} rows saved in courses table"
     puts "There are now #{CourseInstructor.count} rows saved in CourseInstructor table"
