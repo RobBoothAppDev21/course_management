@@ -14,7 +14,6 @@ namespace :slurp do
     courses_csv = CSV.parse(course_text, headers: course_headers, encoding: 'UTF-8')
     courses_csv.delete(0)
 
-    holder = []
     courses_csv.each do |row|
       x = CourseParser.new(row)
       course = Course.new
