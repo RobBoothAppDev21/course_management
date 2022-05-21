@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_17_040058) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_21_180241) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -43,6 +43,27 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_17_040058) do
     t.integer "credits", default: 100
     t.string "syllabus"
     t.string "program"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "evaluations", force: :cascade do |t|
+    t.string "title"
+    t.string "course_number"
+    t.string "course_section"
+    t.string "quarter"
+    t.string "year"
+    t.string "instr_first_name"
+    t.string "instr_last_name"
+    t.integer "invited", default: 0
+    t.integer "responded", default: 0
+    t.float "percent_responded", default: 0.0
+    t.float "hours_committed", default: 0.0
+    t.float "material_conveyed_clear_score", default: 0.0
+    t.float "material_conveyed_interesting_score", default: 0.0
+    t.float "useful_tools_concepts_insights_score", default: 0.0
+    t.float "useful_course_overall_score", default: 0.0
+    t.float "recommendation_score", default: 0.0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
