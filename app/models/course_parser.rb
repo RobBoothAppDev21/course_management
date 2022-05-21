@@ -125,8 +125,17 @@ class CourseParser
   def instructors_arr
     all_instructors = []
     4.times do |i|
-      all_instructors << course["Instructor#{i + 1}"].strip unless course["Instructor#{i + 1}"].nil?
+      break if course["Instructor#{i + 1}"].nil?
+
+      all_instructors << course["Instructor#{i + 1}"].strip
+      # all_instructors << course["Instructor#{i + 1}"].strip unless course["Instructor#{i + 1}"].nil?
     end
     all_instructors
   end
+
+  # def clean_instructor_name(name)
+  #   return %w(Staff Staff) if name == 'Staff'
+  #   return name.split(',') if name == 'Ajayi Jones, Luvvie'
+  #   return 'Hanna, J. Douglas'.split(',') if name == 'Hanna J.'
+  # end
 end
