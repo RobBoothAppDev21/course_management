@@ -1,0 +1,2 @@
+class BidHistory < ApplicationRecord
+end

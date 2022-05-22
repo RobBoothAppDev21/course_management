@@ -10,9 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_22_170439) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_22_181103) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bid_histories", force: :cascade do |t|
+    t.string "course_number"
+    t.string "course_section"
+    t.string "course_title"
+    t.string "course_quarter"
+    t.string "course_year"
+    t.string "day_time"
+    t.string "instructor"
+    t.integer "phase1_enrollment", default: 0
+    t.integer "phase1_seats_available", default: 0
+    t.integer "phase1_price", default: 0
+    t.integer "phase2_enrollment", default: 0
+    t.integer "phase2_seats_available", default: 0
+    t.integer "phase2_price", default: 0
+    t.integer "phase1_new_students_enrollment", default: 0
+    t.integer "phase1_new_students_seats_available", default: 0
+    t.integer "phase1_new_students_price", default: 0
+    t.integer "phase2_new_students_enrollment", default: 0
+    t.integer "phase2_new_students_seats_available", default: 0
+    t.integer "phase2_new_students_price", default: 0
+    t.integer "phase3_enrollment", default: 0
+    t.integer "phase3_seats_available", default: 0
+    t.integer "phase3_price", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "course_instructors", force: :cascade do |t|
     t.bigint "course_id", null: false
