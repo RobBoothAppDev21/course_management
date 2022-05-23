@@ -1,0 +1,54 @@
+<h1>All Instructors</h1>
+
+<table>
+  <tr>
+    <th>
+      First Name
+    </th>
+    <th>
+      Last Name
+    </th>
+    <th>
+      Title
+    </th>
+    <th>
+      Department
+    </th>
+    <th>
+      Phone Number
+    </th>
+    <th>
+      Email
+    </th>
+    <th>
+      Academic Area
+    </th>
+  </tr>
+
+  <% @instructors.each do |instructor| %>
+    <tr>
+      <td>
+        <%= instructor.first_name %>
+      </td>
+      <td>
+        <%= instructor.last_name %>
+      </td>
+      <td>
+        <%= instructor.title %>
+      </td>
+      <td>
+        <%= instructor.department %>
+      </td>
+      <td>
+        <%= instructor.phone_number %>
+      </td>
+      <td>
+        <%= instructor.email %>
+      </td>
+      <td>
+        <%= instructor.academic_area %>
+      </td>
+    </tr>
+  <% end %>
+
+</table>

@@ -3,4 +3,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root 'courses#index'
+
+  get '/instructors', to: 'instructors#index', as: 'instructors'
+  get '/bid_histories', to: 'bid_histories#index', as: 'bid_histories'
+  get '/evaluations', to: 'evaluations#index', as: 'evaluations'
 end

@@ -1,0 +1,140 @@
+<h1>All Bid Histories</h1>
+
+<table>
+  <tr>
+    <th>
+      Course Number
+    </th>
+    <th>
+      Course Section
+    </th>
+    <th>
+      Course Title
+    </th>
+    <th>
+      Course Quarter
+    </th>
+    <th>
+      Course Year
+    </th>
+    <th>
+      Instructor
+    </th>
+    <th>
+      Phase 1 Enrollment
+    </th>
+    <th>
+      Phase 1 Seats Available
+    </th>
+    <th>
+      Phase 1 Price
+    </th>
+    <th>
+      Phase 2 Enrollment
+    </th>
+    <th>
+      Phase 2 Seats Available
+    </th>
+    <th>
+      Phase 2 Price
+    </th>
+    <th>
+      Phase 1 New Students Enrollment
+    </th>
+    <th>
+      Phase 1 New Students Seats Available
+    </th>
+    <th>
+      Phase 1 New Students Price
+    </th>
+    <th>
+      Phase 2 New Students Enrollment
+    </th>
+    <th>
+      Phase 2 New Students Seats Available
+    </th>
+    <th>
+      Phase 2 New Students Price
+    </th>
+    <th>
+      Phase 3 Enrollment
+    </th>
+    <th>
+      Phase 3 Seats Available
+    </th>
+    <th>
+      Phase 3 Price
+    </th>
+  </tr>
+
+  <% @bid_histories.each do |bid_history| %>
+    <tr>
+      <td>
+        <%= bid_history.course_number %>
+      </td>
+      <td>
+        <%= bid_history.course_section %>
+      </td>
+      <td>
+        <%= bid_history.course_title %>
+      </td>
+      <td>
+        <%= bid_history.course_quarter %>
+      </td>
+      <td>
+        <%= bid_history.course_year %>
+      </td>
+      <td>
+        <%= bid_history.day_time %>
+      </td>
+      <td>
+        <%= bid_history.instructor %>
+      </td>
+      <td>
+        <%= bid_history.phase1_enrollment %>
+      </td>
+      <td>
+        <%= bid_history.phase1_seats_available %>
+      </td>
+      <td>
+        <%= bid_history.phase1_price %>
+      </td>
+      <td>
+        <%= bid_history.phase2_enrollment %>
+      </td>
+      <td>
+        <%= bid_history.phase2_seats_available %>
+      </td>
+      <td>
+        <%= bid_history.phase2_price %>
+      </td>
+      <td>
+        <%= bid_history.phase1_new_students_enrollment %>
+      </td>
+      <td>
+        <%= bid_history.phase1_new_students_seats_available %>
+      </td>
+      <td>
+        <%= bid_history.phase1_new_students_price %>
+      </td>
+      <td>
+        <%= bid_history.phase2_new_students_enrollment %>
+      </td>
+      <td>
+        <%= bid_history.phase2_new_students_seats_available %>
+      </td>
+      <td>
+        <%= bid_history.phase2_new_students_price %>
+      </td>
+      <td>
+        <%= bid_history.phase3_enrollment %>
+      </td>
+      <td>
+        <%= bid_history.phase3_seats_available %>
+      </td>
+      <td>
+        <%= bid_history.phase3_price %>
+      </td>
+    </tr>
+  <% end %>
+</table>

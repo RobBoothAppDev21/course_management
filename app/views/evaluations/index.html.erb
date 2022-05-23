@@ -1,0 +1,107 @@
+<h1>All evaluations</h2>
+
+<table>
+  <tr>
+    <th>
+      Title
+    </th>
+    <th>
+      Course Number
+    </th>
+    <th>
+      Course Section
+    </th>
+    <th>
+      Quarter
+    </th>
+    <th>
+      Year
+    </th>
+    <th>
+      Instructor First Name
+    </th>
+    <th>
+      Instructor Last Name
+    </th>
+    <th>
+      Invited
+    </th>
+    <th>
+      Responded
+    </th>
+    <th>
+      Percent Responded
+    </th>
+    <th>
+      Hours Committed
+    </th>
+    <th>
+      Material Conveyed Clearly Score
+    </th>
+    <th>
+      Material Conveyed Interesting Score
+    </th>
+    <th>
+      Useful Tools, Concepts, and Insights Score
+    </th>
+    <th>
+      Useful Course Overall Score
+    </th>
+    <th>
+      Recommendation Score
+    </th>
+  </tr>
+
+  <% @evaluations.each do |evals| %>
+    <tr>
+      <td>
+        <%= evals.title %>
+      </td>
+      <td>
+        <%= evals.course_number %>
+      </td>
+      <td>
+        <%= evals.course_section %>
+      </td>
+      <td>
+        <%= evals.quarter %>
+      </td>
+      <td>
+        <%= evals.year %>
+      </td>
+      <td>
+        <%= evals.instr_first_name %>
+      </td>
+      <td>
+        <%= evals.instr_last_name %>
+      </td>
+      <td>
+        <%= evals.invited %>
+      </td>
+      <td>
+        <%= evals.responded %>
+      </td>
+      <td>
+        <%= evals.percent_responded %>
+      </td>
+      <td>
+        <%= evals.hours_committed %>
+      </td>
+      <td>
+        <%= evals.material_conveyed_clear_score %>
+      </td>
+      <td>
+        <%= evals.material_conveyed_interesting_score %>
+      </td>
+      <td>
+        <%= evals.useful_tools_concepts_insights_score %>
+      </td>
+      <td>
+        <%= evals.useful_course_overall_score %>
+      </td>
+      <td>
+        <%= evals.recommendation_score %>
+      </td>
+    </tr>
+  <% end %>
+</table>
