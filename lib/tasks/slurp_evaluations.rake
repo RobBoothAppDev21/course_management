@@ -23,11 +23,11 @@ namespace :slurp do
     evaluations_csv.each do |row|
       x = EvaluationParser.new(row)
       evaluation = Evaluation.new
-      evaluation.title = x.extract_title
+      evaluation.course_title = x.extract_title
       evaluation.course_number = x.extract_course_number
       evaluation.course_section = x.extract_course_section
-      evaluation.quarter = x.extract_quarter
-      evaluation.year = x.extract_year
+      evaluation.course_quarter = x.extract_quarter
+      evaluation.course_year = x.extract_year
       evaluation.instr_first_name = x.extract_first_name
       evaluation.instr_last_name = x.extract_last_name
       evaluation.invited = x.extract_invited_count

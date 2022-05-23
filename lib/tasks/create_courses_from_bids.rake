@@ -34,8 +34,28 @@ namespace :create_additional_courses do
   namespace :evals do
     desc 'Adding courses to Courses table from evaluations'
     task create_courses: :environment do
+      include CourseCleaner
       evals = Evaluation.all
-      evals.each do |eval|
+      evals.each do |ev|
+        result = Course.find_by(number: ev.course_number,
+                                section: ev.course_section,
+                                quarter: ev.course_quarter,
+                                year: ev.course_year)
+        if result
+          ev.course_id = result.id
+        else
+          x = Course.new
+          x.title = ev.course_title
+          x.number = ev.course_number
+          x.section = ev.course_section
+          x.year = ev.course_year
+          x.quarter = ev.course_quarter
+          x.credits = 0
+          x.academic_year = CourseCleaner.extract_academic_year(ev)
+          x.save
+
+          ev.course_id = x.id
+        end
       end
     end
   end

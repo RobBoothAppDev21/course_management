@@ -1,12 +1,12 @@
 module CourseCleaner
 
-  def extract_academic_year(bid_object)
-    if bid_object.course_quarter == 'Autumn'
-      start_year = bid_object.course_year.to_i
-      end_year = bid_object.course_year.to_i + 1
+  def extract_academic_year(bid_eval_object)
+    if bid_eval_object.course_quarter == 'Autumn'
+      start_year = bid_eval_object.course_year.to_i
+      end_year = bid_eval_object.course_year.to_i + 1
     else
-      start_year = bid_object.course_year.to_i - 1
-      end_year = bid_object.course_year.to_i
+      start_year = bid_eval_object.course_year.to_i - 1
+      end_year = bid_eval_object.course_year.to_i
     end
     "#{start_year}-#{end_year}"
   end

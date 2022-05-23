@@ -8,7 +8,7 @@ class EvaluationParser
   end
 
   def clean_course_number_section
-    evaluation['course_number_section'].split('-')
+    evaluation['course_number_section'].split(/[\s\-]/)
   end
 
   def extract_course_number
@@ -17,7 +17,7 @@ class EvaluationParser
   end
 
   def extract_course_section
-    course_details = course_number = clean_course_number_section
+    course_details = clean_course_number_section
     course_details[1]
   end
 
