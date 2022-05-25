@@ -42,7 +42,7 @@ namespace :create_additional_courses do
                                 quarter: ev.course_quarter,
                                 year: ev.course_year)
         if result
-          ev.course_id = result.id
+          ev.update(course_id: result.id)
         else
           x = Course.new
           x.title = ev.course_title
@@ -54,7 +54,7 @@ namespace :create_additional_courses do
           x.academic_year = CourseCleaner.extract_academic_year(ev)
           x.save
 
-          ev.course_id = x.id
+          ev.update(course_id: x.id)
         end
       end
     end
