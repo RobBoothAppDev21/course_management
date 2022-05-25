@@ -91,7 +91,6 @@ namespace :instructors_from_evals do
     end
     # # p instr_holder.uniq.count
     # # instr_holder
-    binding.pry
   end
 
   task assign_instr: :environment do
@@ -111,6 +110,3 @@ namespace :instructors_from_evals do
     end
   end
 end
-
-
-
