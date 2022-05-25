@@ -1,0 +1,89 @@
+<h1>All sections</h1>
+
+<table>
+  <tr>
+    <th>
+      section Title
+    </th>
+    <th>
+      section Number
+    </th>
+    <th>
+      section Section
+    </th>
+    <th>
+      Year
+    </th>
+    <th>
+      Quarter
+    </th>
+    <th>
+      Program
+    </th>
+    <th>
+      Meeting Days
+    </th>
+    <th>
+      Start Time
+    </th>
+    <th>
+      End Time
+    </th>
+    <th>
+      Building
+    </th>
+    <th>
+      Room
+    </th>
+    <th>
+      Credits
+    </th>
+  </tr>
+
+  <% @sections.each do |section| %>
+  <tr>
+    <td>
+      <%= section.title %>
+    </td>
+    <td>
+      <%= section.number %>
+    </td>
+    <td>
+      <%= section.section %>
+    </td>
+    <td>
+      <%= section.year %>
+    </td>
+    <td>
+      <%= section.quarter %>
+    </td>
+    <td>
+      <%= section.program %>
+    </td>
+    <td>
+      <%= "Sunday " if section.sunday %>
+      <%= "Monday " if section.monday %>
+      <%= "Tuesday " if section.tuesday %>
+      <%= "Wednesday " if section.wednesday %>
+      <%= "Thursday " if section.thursday %>
+      <%= "Friday " if section.friday %>
+      <%= "Saturday " if section.saturday %>
+    </td>
+    <td>
+      <%= section.start_time %>
+    </td>
+    <td>
+      <%= section.end_time %>
+    </td>
+    <td>
+      <%= section.building %>
+    </td>
+    <td>
+      <%= section.room %>
+    </td>
+    <td>
+      <%= section.credits %>
+    </td>
+  </tr>
+  <% end %>
+</table>

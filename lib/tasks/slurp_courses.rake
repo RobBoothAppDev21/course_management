@@ -13,8 +13,8 @@ namespace :slurp do
     courses_csv.delete(0)
 
     courses_csv.each do |row|
-      x = CourseParser.new(row)
-      course = Course.new
+      x = SectionParser.new(row)
+      course = Section.new
       course.title = x.extract_title
       course.number = x.extract_number
       course.section = x.extract_section
@@ -67,7 +67,7 @@ namespace :slurp do
       end
     end
 
-    puts "There are now #{Course.count} rows saved in courses table"
+    puts "There are now #{Section.count} rows saved in courses table"
     puts "There are now #{CourseInstructor.count} rows saved in CourseInstructor table"
   end
 end

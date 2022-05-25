@@ -8,14 +8,14 @@ namespace :create_additional_courses do
       include CourseCleaner
       bid_histories = BidHistory.all
       bid_histories.each do |bh|
-        result = Course.find_by(number: bh.course_number,
+        result = Section.find_by(number: bh.course_number,
                                 section: bh.course_section,
                                 quarter: bh.course_quarter,
                                 year: bh.course_year)
         if result
           bh.update(course_id: result.id)
         else
-          course = Course.new
+          course = Section.new
           course.title = bh.course_title
           course.number = bh.course_number
           course.section = bh.course_section
@@ -37,21 +37,21 @@ namespace :create_additional_courses do
       include CourseCleaner
       evals = Evaluation.all
       evals.each do |ev|
-        result = Course.find_by(number: ev.course_number,
+        result = Section.find_by(number: ev.course_number,
                                 section: ev.course_section,
                                 quarter: ev.course_quarter,
                                 year: ev.course_year)
         if result
           ev.update(course_id: result.id)
         else
-          x = Course.new
+          x = Section.new
           x.title = ev.course_title
           x.number = ev.course_number
           x.section = ev.course_section
           x.year = ev.course_year
           x.quarter = ev.course_quarter
           x.credits = 0
-          x.academic_year = CourseCleaner.extract_academic_year(ev)
+          x.academic_year = SectionCleaner.extract_academic_year(ev)
           x.save
 
           ev.update(course_id: x.id)

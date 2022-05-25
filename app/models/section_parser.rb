@@ -2,7 +2,7 @@ require 'csv'
 # require 'Date'
 # require 'pry-byebug' # binding.pry
 
-class CourseParser
+class SectionParser
   attr_accessor :course
 
   def initialize(row)

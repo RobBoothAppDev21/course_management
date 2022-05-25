@@ -1,4 +1,4 @@
-module CourseCleaner
+module SectionCleaner
 
   def extract_academic_year(bid_eval_object)
     if bid_eval_object.course_quarter == 'Autumn'

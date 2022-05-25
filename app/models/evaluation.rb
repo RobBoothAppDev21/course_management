@@ -1,4 +1,4 @@
 class Evaluation < ApplicationRecord
-  belongs_to :course
+  belongs_to :section
   belongs_to :instructor
 end
