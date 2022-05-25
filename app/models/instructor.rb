@@ -1,6 +1,6 @@
 class Instructor < ApplicationRecord
-  has_many :course_instructors
-  has_many :sections, through: :course_instructors
+  has_many :sections_instructors
+  has_many :sections, through: :sections_instructors
   has_many :evaluations
 
   # validates :email, unique: true

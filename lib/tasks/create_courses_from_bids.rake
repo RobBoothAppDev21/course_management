@@ -1,4 +1,4 @@
-require 'course_cleaner'
+require 'section_cleaner'
 
 namespace :create_additional_courses do
 
@@ -22,7 +22,7 @@ namespace :create_additional_courses do
           course.year = bh.course_year
           course.quarter = bh.course_quarter
           course.credits = 0
-          course.academic_year = CourseCleaner.extract_academic_year(bh)
+          course.academic_year = SectionCleaner.extract_academic_year(bh)
           course.save
 
           bh.update(course_id: course.id)
