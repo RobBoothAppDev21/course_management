@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_25_183103) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_25_190539) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -39,8 +39,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_25_183103) do
     t.integer "phase3_price", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "course_id"
-    t.index ["course_id"], name: "index_bid_histories_on_course_id"
+    t.bigint "section_id"
+    t.index ["section_id"], name: "index_bid_histories_on_section_id"
   end
 
   create_table "evaluations", force: :cascade do |t|
@@ -62,10 +62,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_25_183103) do
     t.float "recommendation_score", default: 0.0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "course_id"
+    t.bigint "section_id"
     t.bigint "instructor_id"
-    t.index ["course_id"], name: "index_evaluations_on_course_id"
     t.index ["instructor_id"], name: "index_evaluations_on_instructor_id"
+    t.index ["section_id"], name: "index_evaluations_on_section_id"
+  end
+
+  create_table "instructor_sections", force: :cascade do |t|
+    t.bigint "section_id", null: false
+    t.bigint "instructor_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["instructor_id"], name: "index_instructor_sections_on_instructor_id"
+    t.index ["section_id"], name: "index_instructor_sections_on_section_id"
   end
 
   create_table "instructors", force: :cascade do |t|
@@ -105,18 +114,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_25_183103) do
     t.string "academic_year"
   end
 
-  create_table "sections_instructors", force: :cascade do |t|
-    t.bigint "course_id", null: false
-    t.bigint "instructor_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["course_id"], name: "index_sections_instructors_on_course_id"
-    t.index ["instructor_id"], name: "index_sections_instructors_on_instructor_id"
-  end
-
-  add_foreign_key "bid_histories", "sections", column: "course_id"
+  add_foreign_key "bid_histories", "sections"
   add_foreign_key "evaluations", "instructors"
-  add_foreign_key "evaluations", "sections", column: "course_id"
-  add_foreign_key "sections_instructors", "instructors"
-  add_foreign_key "sections_instructors", "sections", column: "course_id"
+  add_foreign_key "evaluations", "sections"
+  add_foreign_key "instructor_sections", "instructors"
+  add_foreign_key "instructor_sections", "sections"
 end
