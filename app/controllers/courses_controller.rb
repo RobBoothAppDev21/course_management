@@ -1,4 +1,5 @@
 class CoursesController < ApplicationController
+  before_action :set_course, only: :show
   def index
     @courses = Course.where(academic_year: '2021-2022')
   end
