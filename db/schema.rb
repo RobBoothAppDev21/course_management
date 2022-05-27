@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_25_190539) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_26_211150) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -41,6 +41,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_25_190539) do
     t.datetime "updated_at", null: false
     t.bigint "section_id"
     t.index ["section_id"], name: "index_bid_histories_on_section_id"
+  end
+
+  create_table "courses", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "number", null: false
+    t.string "description", default: "TBD"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "evaluations", force: :cascade do |t|
@@ -112,6 +120,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_25_190539) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "academic_year"
+    t.bigint "course_id"
+    t.index ["course_id"], name: "index_sections_on_course_id"
   end
 
   add_foreign_key "bid_histories", "sections"
@@ -119,4 +129,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_25_190539) do
   add_foreign_key "evaluations", "sections"
   add_foreign_key "instructor_sections", "instructors"
   add_foreign_key "instructor_sections", "sections"
+  add_foreign_key "sections", "courses"
 end
