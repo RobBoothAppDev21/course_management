@@ -18,19 +18,21 @@
   </tr>
 
   <% @courses.each do |course| %>
-    <tr>
-      <td>
-        <%= course.title%>
-      </td>
-      <td>
-        <%= course.number%>
-      </td>
-      <td>
-        <%= course.sections.size%>
-      </td>
-      <td>
-        <%= course.sections.first.credits%>
-      </td>
-    </tr>
+    <% unless course.sections.empty? %>  
+      <tr>
+        <td>
+          <%= course.title%>
+        </td>
+        <td>
+          <%= course.number%>
+        </td>
+        <td>
+          <%= course.sections.size%>
+        </td>
+        <td>
+          <%= course.sections.first.credits %>
+        </td>
+      </tr>
+    <% end %>
   <% end %>
 </table>

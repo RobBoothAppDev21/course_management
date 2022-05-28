@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
-  get '/sections', to: 'sections#index'
+  resources :courses, only: [:index, :show] do
+    resources :sections, only: [:index, :show]
+  end
+
+  # get '/sections', to: 'sections#index'
 
   # get '/courses/:id', to: 'courses#show'
   # get '/course/:id/sections', to: 'sections#index'
