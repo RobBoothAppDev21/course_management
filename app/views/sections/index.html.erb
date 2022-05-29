@@ -1,89 +1,83 @@
-<h1>All sections</h1>
+<h1><%= @course.title%> sections - Academic Year 2021-2022</h1>
 
-<table>
-  <tr>
-    <th>
-      section Title
-    </th>
-    <th>
-      section Number
-    </th>
-    <th>
-      section Section
-    </th>
-    <th>
-      Year
-    </th>
-    <th>
-      Quarter
-    </th>
-    <th>
-      Program
-    </th>
-    <th>
-      Meeting Days
-    </th>
-    <th>
-      Start Time
-    </th>
-    <th>
-      End Time
-    </th>
-    <th>
-      Building
-    </th>
-    <th>
-      Room
-    </th>
-    <th>
-      Credits
-    </th>
-  </tr>
-
+<div id='sections_index'>
   <% @sections.each do |section| %>
-  <tr>
-    <td>
-      <%= section.title %>
-    </td>
-    <td>
-      <%= section.number %>
-    </td>
-    <td>
-      <%= section.section %>
-    </td>
-    <td>
-      <%= section.year %>
-    </td>
-    <td>
-      <%= section.quarter %>
-    </td>
-    <td>
-      <%= section.program %>
-    </td>
-    <td>
-      <%= "Sunday " if section.sunday %>
-      <%= "Monday " if section.monday %>
-      <%= "Tuesday " if section.tuesday %>
-      <%= "Wednesday " if section.wednesday %>
-      <%= "Thursday " if section.thursday %>
-      <%= "Friday " if section.friday %>
-      <%= "Saturday " if section.saturday %>
-    </td>
-    <td>
-      <%= section.start_time %>
-    </td>
-    <td>
-      <%= section.end_time %>
-    </td>
-    <td>
-      <%= section.building %>
-    </td>
-    <td>
-      <%= section.room %>
-    </td>
-    <td>
-      <%= section.credits %>
-    </td>
-  </tr>
+    <div class='section_card'>
+      <div class='section_details_top_container'>
+        <div class='section_course_fav_container'>
+          <div class='section_course_title_data'>
+            <%= @course.title.truncate(40) %>
+          </div>
+          <div class='section_favorite_data'>
+            &#9733
+          </div>
+        </div>
+        <div class='section_course_term_container'>
+          <div class='section_course_section'>
+            <%= @course.number %>-<%= section.section %>
+          </div>
+          <div>
+            (<%= section.quarter %> <%= section.year %>)
+          </div>
+        </div>
+        <div class='section_instructor_credits_container'>
+          <div class='section_instructor_data'>
+            Instructor Name(s)
+          </div>
+          <div class='section_credits_data'>
+            Credits: <%= section.credits %>
+          </div>
+        </div>
+      </div>
+      <div class='section_details_middle_container'>
+        <div class='syllabus_divider_data'>
+          &nbsp
+        </div>
+        <div class='syllabus_link_content_container'>
+          <div class='syllabus_data'>
+            Section syllabus
+          </div>
+          <div class='syllabus_arrow_data'>
+            &#62
+          </div>
+        </div>
+        <div class='syllabus_divider_data'>
+          &nbsp
+        </div>
+      </div>
+        <div class='section_day_time_loc_bottom_container'>
+          <div class='section_day_time_container'>
+            <div class='section_day_container'>
+              <div class='section_day_header'>
+                Day(s)
+              </div>
+              <div class='section_day_data'>
+                Day!
+              </div>
+            </div>
+            <div class='section_start_time_container'>
+              <div class='section_start_time_header'>
+                Start
+              </div>
+              <div class='section_start_time_data'>
+                <%= section.start_time %>
+              </div>
+            </div>
+            <div class='section_end_time_container'>
+              <div class='section_end_time_header'>
+                End
+              </div>
+              <div class='section_end_time_data'>
+                <%= section.end_time %>
+              </div>
+            </div>
+          </div>
+          <div class='section_location_container'>
+            <div class='section_location_data'>
+              <%= section.building %> <%= section.room %>
+            </div>
+          </div>
+        </div>
+    </div>
   <% end %>
-</table>
+</div>

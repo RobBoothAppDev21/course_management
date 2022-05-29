@@ -1,0 +1,137 @@
+#sections_index {
+  display: flex;
+  // flex-direction: row;
+  flex-wrap: wrap;
+  gap: 25px 40px;
+}
+
+.section_card {
+  border: solid #d3d3d3 1px;
+  box-sizing: content-box;
+  width: 250px;
+  border-radius: 5px;
+  color: #a9a9a9;
+  // font-weight: bold;
+  font-size: 12px;
+  margin-bottom: 10px 0px 10px 0px;
+  // padding: 10px 5px 10px 5px;
+}
+
+.section_details_top_container {
+ display: block;
+ padding: 5px 5px 1px 5px;
+}
+
+.section_course_fav_container {
+  display: flex;
+  flex-direction: row;
+  font-size: 20px;
+  justify-content: space-between;
+  padding-bottom: 1px;
+}
+
+.section_course_title_data {
+  font-size: 15px;
+  font-weight: bold;
+  color: black;
+  padding-top: 5px;
+  padding-right: 3px;
+}
+
+.section_favorite_data {
+  font-size: 25px;
+  color: #ffcd3c;
+}
+
+.section_course_term_container {
+  display: flex;
+  flex-direction: row;
+  column-gap: 10px;
+  margin-bottom: 5px;
+}
+
+// .sections_course_data
+
+.section_instructor_credits_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.syllabus_divider_data {
+  background-color: blue;
+  font-size: 0.5px;
+}
+// .section_instructor_data
+
+// .section_credits_data
+
+.section_details_middle_container {
+  display: block;
+}
+
+.syllabus_link_content_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 5px 5px 5px 5px;
+  color: blue;
+}
+
+.syllabus_data {
+  padding-top: 7px;
+}
+
+.syllabus_arrow_data {
+  font-size: 20px;
+}
+
+.section_day_time_loc_bottom_container {
+  display: block;
+  padding: 10px 5px 10px 5px;
+}
+
+.section_day_time_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+// .section_day_container
+
+// .section_day_header
+
+.section_day_data {
+  font-size: 16px;
+  color: black;
+}
+
+// .section_start_time_container
+
+// .section_start_time_header
+
+.section_start_time_data {
+  font-size: 16px;
+  color: black;
+}
+
+.section_end_time_container {
+  margin-bottom: 5px;
+}
+
+// .section_end_time_header
+
+.section_end_time_data {
+  font-size: 16px;
+  color: black;
+}
+
+.section_location_container {
+  display: inline-block;
+  flex-grow: 1;
+  // flex-basis: 100%;
+}
+
+// .section_location_data
