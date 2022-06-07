@@ -32,7 +32,9 @@ class Section < ApplicationRecord
   has_many :instructors, through: :instructor_sections
   has_one :bid_history
   has_many :evaluations
-  belongs_to :course
+  belongs_to :course, counter_cache: true
 
   validates :number, :year, :section, :quarter, presence: true
+
+  scope :current, -> { where academic_year: '2021-2022' }
 end

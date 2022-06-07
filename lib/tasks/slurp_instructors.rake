@@ -45,6 +45,5 @@ namespace :slurp do
       instructor.save
       # p "SAVED: Instructor #{instructor.first_name.capitalize} #{instructor.last_name.capitalize}"
     end
-    # binding.pry
   end
 end

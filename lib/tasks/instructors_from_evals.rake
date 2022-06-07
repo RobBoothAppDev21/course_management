@@ -57,7 +57,6 @@ namespace :instructors_from_evals do
     #     ev.update(instructor_id: instr_id_name[0].strip)
     #     evals_updated += 1
     #   end
-    #   binding.pry
     # end
 
     # names_flip = [

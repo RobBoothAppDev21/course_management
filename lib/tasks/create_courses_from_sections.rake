@@ -14,7 +14,6 @@ namespace :create_courses do
 
         section.update(course_id: new_course.id)
         # section.course_id = new_course.id
-        # binding.pry
       end
     end
   end
@@ -73,35 +72,8 @@ namespace :create_courses do
     duplicate_courses.each do |arr|
       arr[1].each do |old_id|
         sections = Section.where(course_id: old_id)
-        # binding.pry
         sections.update_all(course_id: arr[0])
       end
     end
   end
 end
-
-
-
-"33923 + 441 + Advanced Industrial Organization III"
-"33923 + 730 + Advanced Industrial Organization II" # --> should be 441?
-
-"35101 + 515 + Futures, Forwards, Options & Swaps: Theory and Practice"
-"35101 + 752 + International Macroeconomics and Trade" # --> should be 551
-
-"35901 + 455 + Portfolio Choice and Asset Pricing "
-"35901 + 622 + Portfolio Choice and Asset Pricing"
-"35901 + 675 + Portfolio Choice and Asset Pricing: Theory and Applications"
-"35901 + 702 + Theory of Financial Decisions I" # --> should be 622
-
-"38102 + 474 + Persuasion II: Influence Through Narrative ⑤"
-"38102 + 637 + Persuasion II: Influence Through Narrative"
-"38102 + 773 + Applied Macroeconomics: Heterogeneity and Macro" # -- should be 507
-
-
-"40101 + 538 + Supply Chain Strategy and Practice"
-"40101 + 779 + Advanced Industrial Organization I" # --> should be 554
-
-"40902 + 685 + Special Topics in Operations Mgt./Mgt. Sci.: Online Optimization & Decision Making under Uncertainty" # --> 628
-"40902 + 782 + Special Topics in Operations Mgt./Mgt. Sci." # --> 628
-"40902 + 789 + Advanced Quantitative Marketing" # --> 528
-#685/782 --> 36920 or 36921

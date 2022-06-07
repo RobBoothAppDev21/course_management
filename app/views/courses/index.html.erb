@@ -16,7 +16,10 @@
           <%= course.number %>
         </div>
         <div class='course_sections_data'>
-          <%= link_to pluralize(course.sections.count, 'section'), course_sections_url(course) %>
+          <%= 
+            link_to pluralize(course.current_sections.count, 'section'), 
+            course_sections_url(course) 
+          %>
         </div>
         <div class='course_credits_data'>
           Credits: 100
