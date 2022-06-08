@@ -1,53 +1,64 @@
 <h1>Courses</h1>
 
-<div class='course_index2'>
+<div class='course_index'>
   <% @courses.each do |course| %>
-    <div class='course_card2'>
-      <div class='course_info_container'>
-        <div class='course_title_like_container'>
+    <div class='course_card'>
+      <div class='course_title_info_like_container'>
+        <div class='course_title_container'>
           <div class='course_title_data'>
-            <%= course.title.truncate(40) %>
-          </div>
-          <div class='course_like_data'>
-            ♥
+            <%= course.title.truncate(55) %>
           </div>
         </div>
-        <div class='course_number_data'>
-          <%= course.number %>
-        </div>
-        <div class='course_sections_data'>
-          <%= 
-            link_to pluralize(course.current_sections.count, 'section'), 
-            course_sections_url(course) 
-          %>
-        </div>
-        <div class='course_credits_data'>
-          Credits: 100
+        <div class='course_info_like_container'>
+          <div class='course_info_container'>
+            <div class='course_number_container'>
+              <div class='course_number_data'>
+                <%= course.number %>
+              </div>
+              <div class='course_section_count_container'>
+                <div class='course_section_count_data'>
+                  <%= 
+                    link_to pluralize(course.current_sections.count, 'section'), 
+                    course_sections_url(course) 
+                  %>
+                </div>
+              </div>
+              <div class='course_credits_container'>
+                <div class='course_credits_data'>
+                  Credits: 100
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class='course_like_container'>
+            <div class='course_like_data'>
+              ♥
+            </div>
+          </div>
         </div>
       </div>
-      <div class='course_eval_divider_data'>
-          x
-      </div>
-      <div class='course_eval_info_container'>
-        <div class='prior_course_container'>  
-          <div class='prior_course_label'>
+      <div class='course_eval_container'>
+        <div class='course_eval_header_container'>
+          <div class='course_eval_header_data'>
             Prior Course Evaluation
           </div>
         </div>
-        <div class='overall_score_container'>
-          <div class='overall_score_header'>
-            Overall Score
+        <div class='course_eval_info_container'>
+          <div class='course_overall_score_container'>
+            <div class='course_overall_score_header'>
+              Overall Score
+            </div>
+            <div class='course_overall_score_data'>
+              4.5
+            </div>
           </div>
-          <div class='overall_score_data'>
-            4.80
-          </div>
-        </div>
-        <div class='hours_required_container'>
-          <div class='hours_required_header'>
-            Hours Required
-          </div>
-          <div class='hours_required_data'>
-            10.74
+          <div class='course_hours_required_container'>
+            <div class='course_hours_required_header'>
+              Hours Required
+            </div>
+            <div class='course_hours_required_data'>
+              7.3
+            </div>
           </div>
         </div>
       </div>

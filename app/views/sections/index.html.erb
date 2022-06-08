@@ -1,83 +1,84 @@
 <h1><%= @course.title%> sections - Academic Year 2021-2022</h1>
 
-<div id='sections_index'>
+<div class='section_index2'>
   <% @sections.each do |section| %>
-    <div class='section_card'>
-      <div class='section_details_top_container'>
-        <div class='section_course_fav_container'>
-          <div class='section_course_title_data'>
-            <%= @course.title.truncate(40) %>
-          </div>
-          <div class='section_favorite_data'>
-            &#9733
+    <div class='section_card2'>
+      <div class='section_title_info_fav_container2'>
+        <div class='section_course_title_container2'>
+          <div class='section_course_title_data2'>
+            <%= @course.title.truncate(55) %>
           </div>
         </div>
-        <div class='section_course_term_container'>
-          <div class='section_course_section'>
-            <%= @course.number %>-<%= section.section %>
+        <div class='section_info_fav_container2'>
+          <div class='section_info_container2'>
+            <div class='section_number_quarter_container2'>
+              <div class='section_number_container2'>
+                <div class='section_number_data2'>
+                  <%= @course.number %>-<%= section.section %>
+                </div>
+              </div>
+              <div class='section_quarter_container2'>
+                <div class='section_quarter_data2'>
+                  (<%= section.quarter %> <%= section.year %>)
+                </div>
+              </div>
+            </div>
+            <div class='section_instructor_container2'>
+              <div class='section_instructor_data2'>
+                Instructor Name(s)
+              </div>
+            </div>
+            <div class='section_credits_container2'>
+              <div class='section_credits_data2'>
+                Credits: <%= section.credits %>
+              </div>
+            </div>
           </div>
-          <div>
-            (<%= section.quarter %> <%= section.year %>)
-          </div>
-        </div>
-        <div class='section_instructor_credits_container'>
-          <div class='section_instructor_data'>
-            Instructor Name(s)
-          </div>
-          <div class='section_credits_data'>
-            Credits: <%= section.credits %>
+          <div class='section_fav_container2'>
+            <div class='section_fav_data2'>
+              &#9733
+            </div>
           </div>
         </div>
       </div>
-      <div class='section_details_middle_container'>
-        <div class='syllabus_divider_data'>
-          &nbsp
-        </div>
-        <div class='syllabus_link_content_container'>
-          <div class='syllabus_data'>
-            Section syllabus
+      <div class='section_day_time_loc_container2'>
+        <div class='section_day_time_container2'>
+          <div class='section_day_container2'>
+            <div class='section_day_header2'>
+              Day(s)
+            </div>
+            <div class='section_day_data2'>
+              Thurs
+            </div>
           </div>
-          <div class='syllabus_arrow_data'>
-            &#62
+          <div class='section_start_time_container2'>
+            <div class='section_start_time_header2'>
+              Start
+            </div>
+            <div class='section_start_time_data2'>
+              <%= section.start_time %>
+            </div>
+          </div>
+          <div class='section_end_time_container2'>
+            <div class='section_end_time_header2'>
+              End
+            </div>
+            <div class='section_end_time_data2'>
+              <%= section.end_time %>
+            </div>
           </div>
         </div>
-        <div class='syllabus_divider_data'>
-          &nbsp
+        <div class='section_location_container2'>
+          <div class='section_location_data'>
+            <%= section.building %> <%= section.room %>
+          </div>
         </div>
       </div>
-        <div class='section_day_time_loc_bottom_container'>
-          <div class='section_day_time_container'>
-            <div class='section_day_container'>
-              <div class='section_day_header'>
-                Day(s)
-              </div>
-              <div class='section_day_data'>
-                Day!
-              </div>
-            </div>
-            <div class='section_start_time_container'>
-              <div class='section_start_time_header'>
-                Start
-              </div>
-              <div class='section_start_time_data'>
-                <%= section.start_time %>
-              </div>
-            </div>
-            <div class='section_end_time_container'>
-              <div class='section_end_time_header'>
-                End
-              </div>
-              <div class='section_end_time_data'>
-                <%= section.end_time %>
-              </div>
-            </div>
-          </div>
-          <div class='section_location_container'>
-            <div class='section_location_data'>
-              <%= section.building %> <%= section.room %>
-            </div>
-          </div>
+      <div class='section_syllabus_container2'>
+        <div class='section_syllabus_data'>
+          Syllabus
         </div>
+      </div>
     </div>
   <% end %>
 </div>
