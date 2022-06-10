@@ -1,0 +1,106 @@
+// table{}
+
+.section_bidhistory_eval_container3 {
+  display: grid;
+  grid-template-columns: [course] 60px
+                         [term] 60px 
+                         [day] 60px
+                         [time] 60px
+                         [hours_commited] 65px
+                         [overall_score] 60px
+                         [recommended_score] 100px
+                         [interesting_score] 120px
+                         [clear_score] 120px
+                         [price] 50px
+                         [enrolled] 55px
+                         [price] 50px
+                         [enrolled] 55px
+                         [price] 50px
+                         [enrolled] 55px
+                         ;
+  grid-auto-rows: 36px 36px auto;
+  // grid-template-rows: min-content 1fr min-content;
+  grid-template-areas: 
+    '.........                                    hd    hd    hd'
+    'hd   hd   hd   hd   hd   hd   hd   hd   hd   hd    hd    hd'
+    'main main main main main main main main main main  main  main';
+  // grid-row: main-start / main-end;
+  font-size: 12px;
+  text-align: center;
+  align-items: center;
+  // row-gap: 20px;
+}
+
+.header {
+  // grid-area: hd;
+  font-weight: bold;
+}
+
+.main {
+  // grid-area: main;
+  border: 2px
+}
+
+// .section_bhe_empty_header {
+//   grid-column: 1/10;
+// }
+
+.section_bhe_round1_header3 {
+  grid-column: 10/12;
+  vertical-align: bottom;
+}
+
+.section_bhe_round2_header3 {
+  grid-column: 12/14;
+}
+
+.section_bhe_round3_header3 {
+  grid-column: 14/16;
+}
+
+// .section_bhe_course_number_header3 {}
+
+
+
+.section_bidhistory_eval_container2{
+  font-size: 12px;
+  text-align: center;
+}
+// .section_bhe_header_row{}
+// .section_bhe_empty2{}
+// .section_bhe_round_header2{}
+// .section_bhe_round_header2{}
+// .section_bhe_round_header2{}
+// .section_bhe_header_row{}
+// .section_bhe_course_number_header2{}
+    // .section_bhe_term_header2{}
+    // .section_bhe_day_header2{}
+    // .section_bhe_time_header2{}
+    // .section_bhe_hours_committed_header2{}
+    // .section_bhe_overall_score_header2{}
+    // .section_bhe_recommended_score_header2{}
+    // .section_bhe_interesting_score_header2{}
+    // .section_bhe_clear_score_header2{}
+    // .section_bhe_price_header2{}
+    // .section_bhe_enrollment_header2{}
+    // .section_bhe_price_header2{}
+    // .section_bhe_enrollment_header2{}
+    // .section_bhe_price_header2{}
+    // .section_bhe_enrollment_header2{}
+    // .section_bhe_data_row{}
+// .section_bhe_course_data{}
+// .section_bhe_term_data{}
+// .section_bhe_day_data{}
+// .section_bhe_time_data{}
+// .section_bhe_hours_committed_data{}
+// .section_bhe_overall_score_data{}
+// .section_bhe_recommend_score_data{}
+// .section_bhe_interesting_score_data{}
+// .section_bhe_clear_score_data{}
+// .section_bhe_price_data{}
+// .section_bhe_enrollment_data{}
+// .section_bhe_price_data{}
+// .section_bhe_enrollment_data{}
+// .section_bhe_price_data{}
+// .section_bhe_enrollment_data{}
+ 

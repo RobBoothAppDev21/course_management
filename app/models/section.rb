@@ -37,4 +37,24 @@ class Section < ApplicationRecord
   validates :number, :year, :section, :quarter, presence: true
 
   scope :current, -> { where academic_year: '2021-2022' }
+
+  def list_instructors
+    name_holder = []
+    instructor_array = instructors
+    instructor_array.each do |instructor|
+      name_holder << "#{instructor.first_name} #{instructor.last_name}"
+    end
+    name_holder.join(', ')
+  end
+
+  def meeting_days
+    weekdays = %i[sunday monday tuesday wednesday thursday friday saturday]
+    days_taught = []
+    weekdays.each do |day|
+      if self.send(day)
+        days_taught << day.to_s.capitalize
+      end
+    end
+    days_taught.empty? ? 'N/A' : days_taught.join(', ')
+  end
 end

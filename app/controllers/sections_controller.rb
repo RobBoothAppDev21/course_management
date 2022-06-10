@@ -2,7 +2,8 @@ class SectionsController < ApplicationController
   before_action :set_course, only: %i[index show]
   before_action :set_section, only: :show
   def index
-    @sections = Section.where(academic_year: '2021-2022', course_id: @course.id)
+    @all_sections = Section.where(course_id: @course.id)
+    @sections = @all_sections.where(academic_year: '2021-2022', course_id: @course.id)
   end
 
   def show

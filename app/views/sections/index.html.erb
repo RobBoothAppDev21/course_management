@@ -25,7 +25,8 @@
             </div>
             <div class='section_instructor_container2'>
               <div class='section_instructor_data2'>
-                Instructor Name(s)
+                <%# Instructor Name(s) %>
+                <%= section.list_instructors.truncate(30) %>
               </div>
             </div>
             <div class='section_credits_container2'>
@@ -48,7 +49,7 @@
               Day(s)
             </div>
             <div class='section_day_data2'>
-              Thurs
+              <%= section.meeting_days %>
             </div>
           </div>
           <div class='section_start_time_container2'>
@@ -79,6 +80,118 @@
           Syllabus
         </div>
       </div>
+    </div>
+  <% end %>
+</div>
+
+<hr>
+
+<div class='section_bidhistory_eval_container3'>
+  <%# <div class='section_bhe_empty_header'>
+  </div> %>
+  <div class='section_bhe_round1_header3 header'>
+    Round 1
+  </div>
+  <div class='section_bhe_round2_header3 header'>
+    Round 2
+  </div>
+  <div class='section_bhe_round3_header3 header'>
+    Round 3
+  </div>
+  <div class='section_bhe_course_number_header3 header'>
+    Course
+  </div>
+  <div class='section_bhe_term_header3 header'>
+    Term
+  </div>
+  <div class='section_bhe_day_header3 header'>
+    Day
+  </div>
+  <div class='section_bhe_time_header3 header'>
+    Time
+  </div>
+  <div class='section_bhe_hours_committed_header3 header'>
+    Hours Committed
+  </div>
+  <div class='section_bhe_overall_score_header3 header'>
+    Oveall Score
+  </div>
+  <div class='section_bhe_recommended_score_header3 header'>
+    Recommended Score
+  </div>
+  <div class='section_bhe_interesing_score_header3 header'>
+    Material Conveyed Interesing Score
+  </div>
+  <div class='section_bhe_clear_score_header3 header'>
+    Material Conveyed Clear Score
+  </div>
+  <div class='section_bhe_price1_header3 header'>
+    Price
+  </div>
+  <div class='section_bhe_enrolled1_header3 header'>
+    Enrolled
+  </div>
+  <div class='section_bhe_price2_header3 header'>
+    Price
+  </div>
+  <div class='section_bhe_enrolled2_header3 header'>
+    Enrolled
+  </div>
+  <div class='section_bhe_price3_header3 header'>
+    Price
+  </div>
+  <div class='section_bhe_enrolled3_header3 header'>
+    Enrolled
+  </div>
+  <% @all_sections.each do |section| %>
+    <% next if section.bid_history.nil? | section.evaluations.empty? %>
+    <div class='section_bhe_course_data3 main'>
+      <%= @course.number%>-<%= section.section %>
+    </div>
+    <div class='section_bhe_term_data3 main'>
+      <%= section.quarter[0..2].upcase %><%= section.year[-2..]%>  
+    </div>
+    <div class='section_bhe_day_data3 main'>
+      <%= section.meeting_days[0..2] %>
+    </div>
+    <div class='section_bhe_time_data3 main'>
+      <%= section.start_time %>-<%= section.end_time %>
+    </div>
+    <div class='section_bhe_hours_committed_data3 main'>
+      <%= section.evaluations.first.hours_committed %>
+    </div>
+    <div class='section_bhe_overall_score_data3 main'>
+      <%= section.evaluations.first.useful_course_overall_score %>
+    </div>
+    <div class='section_bhe_recommend_score_data3 main'>
+      <%= section.evaluations.first.recommendation_score %>
+    </div>
+    <div class='section_bhe_interesting_score_data3 main'>
+      <%= section.evaluations.first.material_conveyed_interesting_score %>
+    </div>
+    <div class='section_bhe_clear_score_data3 main'>
+      <%= section.evaluations.first.material_conveyed_clear_score %>
+    </div>
+    <div class='section_bhe_price_data3 main'>
+      <%= section.bid_history.phase1_price %>
+    </div>
+    <div class='section_bhe_enrollment_data3 main'>
+      <%= section.bid_history.phase1_enrollment %> /
+      <%= section.bid_history.phase1_enrollment %>
+    </div>
+    <div class='section_bhe_price_data3 main'>
+      <%= section.bid_history.phase2_price %>
+    </div>
+    <div class='section_bhe_enrollment_data3 main'>
+      <%= section.bid_history.phase2_enrollment %> /
+      <%= section.bid_history.phase2_enrollment %>
+    </div>
+    <div class='section_bhe_price_data3 main'>
+      <%= section.bid_history.phase3_price %>
+    </div>
+    <div class='section_bhe_enrollment_data3 main'>
+      <%= section.bid_history.phase3_enrollment %> /
+      <%= section.bid_history.phase3_enrollment %>
     </div>
   <% end %>
 </div>
