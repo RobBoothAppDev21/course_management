@@ -44,6 +44,16 @@
 // .section_bhe_empty_header {
 //   grid-column: 1/10;
 // }
+.section_header_wrapper {
+  display: contents;
+  // background-color: white;
+}
+
+.section_header_wrapper > .header {
+  background-color: white;
+  height: 36px;
+  border-bottom: 2px;
+}
 
 .section_bhe_round1_header3 {
   grid-column: 10/12;
