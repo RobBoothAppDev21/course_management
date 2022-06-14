@@ -52,9 +52,16 @@ class Section < ApplicationRecord
     days_taught = []
     weekdays.each do |day|
       if self.send(day)
-        days_taught << day.to_s.capitalize
+        day_as_string = day.to_s.capitalize
+        abbrev_day = case day_as_string
+        when 'Tuesday' || 'Thursday'
+          day_as_string[0..3] + '.'
+        else
+          day_as_string[0..2] + '.'
+        end
+        days_taught << abbrev_day
       end
-    end
-    days_taught.empty? ? 'N/A' : days_taught.join(', ')
+    end 
+    days_taught.empty? ? 'TBD' : days_taught.join(', ')
   end
 end
