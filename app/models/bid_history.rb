@@ -31,4 +31,12 @@
 #
 class BidHistory < ApplicationRecord
   belongs_to :section
+
+
+  def enrolled_ratio(phase) # %w[phase1, phase2, phase1_new_students, phase2_new_students, phase3]
+    total_seats = self.send("#{phase}_enrollment".to_sym) + 
+                  self.send("#{phase}_seats_available".to_sym)
+
+    "#{self.send("#{phase}_enrollment".to_sym)} / #{total_seats}"
+  end
 end

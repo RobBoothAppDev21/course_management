@@ -24,10 +24,10 @@
 }
 
 .section_bhe_day {
-  width: 60px;
+  width: 75px;
 }
 .section_bhe_time {
-  width: 60px;
+  width: 110px;
 }
 
 .section_bhe_hours_committed {
@@ -81,19 +81,31 @@
   row-gap: 10px;
 }
 
-.section_bhe_data_row {
+.section_bhe_data_instructor_row {
   display: flex;
-  flex-direction: wrap;
-  flex-wrap: wrap;
-  text-align: center;
-  row-gap: 10px;
+  flex-direction: column;
+  justify-content: center;
   background-color: white;
   border-radius: 8px;
   height: 40px;
-  align-items: center;
   border: solid #d3d3d3 1px;
 }
 
-.break {
-  flex-basis: 100%;
+.section_bhe_data_row {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  row-gap: 5px;
+  align-items: center;
+}
+
+.section_bhe_instructors_container {
+  display: flex;
+}
+
+.section_bhe_instructors_data {
+  text-align: left;
+  font-size: 10px;
+  font-style: italic;
+  padding-left: 4px;
 }

@@ -152,62 +152,71 @@
   <div class='section_bhe_data_container'>
     <% @all_sections.each do |section| %>
       <% next if section.bid_history.nil? | section.evaluations.empty? %>
-      <div class='section_bhe_data_row'>  
-        <div class='section_bhe_course'>
-          <%= @course.number%>-<%= section.section %>
-        </div>
-        <div class='section_bhe_term'>
-          <%= section.quarter[0..2].upcase %><%= section.year[-2..]%>  
-        </div>
-        <div class='section_bhe_day'>
-          <%= section.meeting_days %>
-        </div>
-        <div class='section_bhe_time'>
-          <%= section.start_time %> - <%= section.end_time %>
-        </div>
-        <div class='section_bhe_hours_committed'>
-          <%= section.evaluations.first.hours_committed %>
-        </div>
-        <div class='section_bhe_overall_score'>
-          <%= section.evaluations.first.useful_course_overall_score %>
-        </div>
-        <div class='section_bhe_recommended_score'>
-          <%= section.evaluations.first.recommendation_score %>
-        </div>
-        <div class='section_bhe_interesting_score'>
-          <%= section.evaluations.first.material_conveyed_interesting_score %>
-        </div>
-        <div class='section_bhe_clear_score'>
-          <%= section.evaluations.first.material_conveyed_clear_score %>
-        </div>
-        <div class='section_bhe_round_container'>
-          <div class='section_bhe_price'>
-            <%= section.bid_history.phase1_price %>
+      <div class='section_bhe_data_instructor_row'>
+        <div class='section_bhe_data_row'>  
+          <div class='section_bhe_course'>
+            <%= @course.number%>-<%= section.section %>
           </div>
-          <div class='section_bhe_enrolled'>
-            <%= section.bid_history.phase1_enrollment %> /
-            <%= section.bid_history.phase1_enrollment %>
+          <div class='section_bhe_term'>
+            <%= section.quarter[0..2].upcase %><%= section.year[-2..]%>  
           </div>
+          <div class='section_bhe_day'>
+            <%= section.meeting_days %>
+          </div>
+          <div class='section_bhe_time'>
+            <%= section.start_time %> - <%= section.end_time %>
+          </div>
+          <div class='section_bhe_hours_committed'>
+            <%= section.evaluations.first.hours_committed %>
+          </div>
+          <div class='section_bhe_overall_score'>
+            <%= section.evaluations.first.useful_course_overall_score %>
+          </div>
+          <div class='section_bhe_recommended_score'>
+            <%= section.evaluations.first.recommendation_score %>
+          </div>
+          <div class='section_bhe_interesting_score'>
+            <%= section.evaluations.first.material_conveyed_interesting_score %>
+          </div>
+          <div class='section_bhe_clear_score'>
+            <%= section.evaluations.first.material_conveyed_clear_score %>
+          </div>
+          <div class='section_bhe_round_container'>
+            <div class='section_bhe_price'>
+              <%= section.bid_history.phase1_price %>
+            </div>
+            <div class='section_bhe_enrolled'>
+              <%= section.bid_history.enrolled_ratio('phase1')%>
+            </div>
+          </div>
+          <div class='section_bhe_round_container'>
+            <div class='section_bhe_price'>
+              <%= section.bid_history.phase2_price %>
+            </div>
+            <div class='section_bhe_enrolled'>
+              <%= section.bid_history.enrolled_ratio('phase2')%>
+            </div>
+          </div>
+          <div class='section_bhe_round_container'>
+            <div class='section_bhe_price'>
+              <%= section.bid_history.phase3_price %>
+            </div>
+            <div class='section_bhe_enrolled'>
+              <%= section.bid_history.enrolled_ratio('phase3')%>
+            </div>
+          </div>
+          
         </div>
-        <div class='section_bhe_round_container'>
-          <div class='section_bhe_price'>
-            <%= section.bid_history.phase2_price %>
-          </div>
-          <div class='section_bhe_enrolled'>
-            <%= section.bid_history.phase2_enrollment %> /
-            <%= section.bid_history.phase2_enrollment %>
-          </div>
-        </div>
-        <div class='section_bhe_round_container'>
-          <div class='section_bhe_price'>
-            <%= section.bid_history.phase3_price %>
-          </div>
-          <div class='section_bhe_enrolled'>
-            <%= section.bid_history.phase3_enrollment %> /
-            <%= section.bid_history.phase3_enrollment %>
+        <div class='section_bhe_instructors_container'>
+          <div class='section_bhe_instructors_data'>
+            <%= section.list_instructors %>
           </div>
         </div>
       </div>
     <% end %>
   </div>
 </div>
+
+<%# <div class='section_bhe_instructor_container'> %>
+<%#= section.list_instructors %>
+<%# </div> %>
