@@ -133,6 +133,10 @@ class SectionParser
     all_instructors
   end
 
+  def extract_syllabus
+    course['Syllabus']
+  end
+
   # def clean_instructor_name(name)
   #   return %w(Staff Staff) if name == 'Staff'
   #   return name.split(',') if name == 'Ajayi Jones, Luvvie'

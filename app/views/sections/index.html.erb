@@ -25,7 +25,6 @@
             </div>
             <div class='section_instructor_container2'>
               <div class='section_instructor_data2'>
-                <%# Instructor Name(s) %>
                 <%= section.list_instructors.truncate(30) %>
               </div>
             </div>
@@ -77,7 +76,7 @@
       </div>
       <div class='section_syllabus_container2'>
         <div class='section_syllabus_data'>
-          Syllabus
+          <%= link_to "Syllabus", section.syllabus, target: :_blank %>
         </div>
       </div>
     </div>
@@ -167,23 +166,38 @@
             <%= section.start_time %> - <%= section.end_time %>
           </div>
           <div class='section_bhe_hours_committed'>
-            <%= section.evaluations.first.hours_committed %>
+            <%= 
+              number_with_precision(section.evaluations.first.hours_committed,
+                                      precision: 2) 
+            %>
           </div>
           <div class='section_bhe_overall_score'>
-            <%= section.evaluations.first.useful_course_overall_score %>
+            <%= 
+              number_with_precision(section.evaluations.first.useful_course_overall_score,
+                                    precision: 2)
+            %>
           </div>
           <div class='section_bhe_recommended_score'>
-            <%= section.evaluations.first.recommendation_score %>
+            <%=
+              number_with_precision(section.evaluations.first.recommendation_score,
+                                    precision: 2)
+            %>
           </div>
           <div class='section_bhe_interesting_score'>
-            <%= section.evaluations.first.material_conveyed_interesting_score %>
+            <%=
+              number_with_precision(section.evaluations.first.material_conveyed_interesting_score,
+                                    precision: 2)
+            %>
           </div>
           <div class='section_bhe_clear_score'>
-            <%= section.evaluations.first.material_conveyed_clear_score %>
+            <%= 
+              number_with_precision(section.evaluations.first.material_conveyed_clear_score,
+                                    precision: 2)
+            %>
           </div>
           <div class='section_bhe_round_container'>
             <div class='section_bhe_price'>
-              <%= section.bid_history.phase1_price %>
+              <%= number_with_delimiter(section.bid_history.phase1_price) %>
             </div>
             <div class='section_bhe_enrolled'>
               <%= section.bid_history.enrolled_ratio('phase1')%>
@@ -191,7 +205,7 @@
           </div>
           <div class='section_bhe_round_container'>
             <div class='section_bhe_price'>
-              <%= section.bid_history.phase2_price %>
+              <%= number_with_delimiter(section.bid_history.phase2_price) %>
             </div>
             <div class='section_bhe_enrolled'>
               <%= section.bid_history.enrolled_ratio('phase2')%>
@@ -199,7 +213,7 @@
           </div>
           <div class='section_bhe_round_container'>
             <div class='section_bhe_price'>
-              <%= section.bid_history.phase3_price %>
+              <%= number_with_delimiter(section.bid_history.phase3_price) %>
             </div>
             <div class='section_bhe_enrolled'>
               <%= section.bid_history.enrolled_ratio('phase3')%>
@@ -216,7 +230,3 @@
     <% end %>
   </div>
 </div>
-
-<%# <div class='section_bhe_instructor_container'> %>
-<%#= section.list_instructors %>
-<%# </div> %>
