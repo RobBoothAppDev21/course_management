@@ -25,7 +25,7 @@
               </div>
               <div class='course_credits_container'>
                 <div class='course_credits_data'>
-                  Credits: 100
+                  Credits: <%= course.credits %>
                 </div>
               </div>
             </div>
@@ -40,7 +40,7 @@
       <div class='course_eval_container'>
         <div class='course_eval_header_container'>
           <div class='course_eval_header_data'>
-            Prior Course Evaluation
+            Prior Course Evaluations
           </div>
         </div>
         <div class='course_eval_info_container'>
@@ -49,7 +49,7 @@
               Overall Score
             </div>
             <div class='course_overall_score_data'>
-              4.5
+              <%= number_with_precision(course.calculate_average_overall_score, precision: 2) %>
             </div>
           </div>
           <div class='course_hours_required_container'>
@@ -57,7 +57,7 @@
               Hours Required
             </div>
             <div class='course_hours_required_data'>
-              7.3
+              <%= number_with_precision(course.calculate_average_hours_committed, precision: 2) %>
             </div>
           </div>
         </div>

@@ -28,6 +28,9 @@
 #  course_id     :bigint
 #
 class Section < ApplicationRecord
+  QUARTER_SORT = %w(Summer Spring Winter Autumn)
+  ACADEMIC_YEAR_SORT = %w(2021-2022 2020-2021 2019-2020 2018-2019 2017-2018 2016-2017)
+
   has_many :instructor_sections
   has_many :instructors, through: :instructor_sections
   has_one :bid_history
@@ -36,7 +39,10 @@ class Section < ApplicationRecord
 
   validates :number, :year, :section, :quarter, presence: true
 
-  scope :current, -> { where academic_year: '2021-2022' }
+  scope :sort_academic_year, -> { in_order_of(:academic_year, ACADEMIC_YEAR_SORT) }
+  scope :sort_quarter, -> { in_order_of(:quarter, QUARTER_SORT) }
+  scope :sorted_sections, -> { sort_academic_year.sort_quarter.order(section: :asc)}
+  scope :current_academic_year, -> { where academic_year: '2021-2022' }
 
   def list_instructors
     name_holder = []

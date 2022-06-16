@@ -2,16 +2,10 @@ class SectionsController < ApplicationController
   before_action :set_course, only: %i[index show]
   before_action :set_section, only: :show
 
-  QUARTER_SORT = %w(Summer Spring Winter Autumn)
-  ACADEMIC_YEAR_SORT = %w(2021-2022 2020-2021 2019-2020 2018-2019 2017-2018 2016-2017)
-
   def index
-    @all_sections = Section.where(course_id: @course.id)
-                           .in_order_of(:academic_year, ACADEMIC_YEAR_SORT)
-                           .in_order_of(:quarter, QUARTER_SORT)
-                           .order(section: :asc)
+    @all_sections = Section.where(course_id: @course.id).sorted_sections
 
-    @sections = @all_sections.where(academic_year: '2021-2022', course_id: @course.id)
+    @sections = @all_sections.current_academic_year
   end
 
   def show
