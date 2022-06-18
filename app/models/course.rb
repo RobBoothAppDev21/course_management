@@ -14,10 +14,14 @@
 class Course < ApplicationRecord
   has_many :sections # , -> { where academic_year: '2021-2022' }
 
-  has_many :current_sections, -> { current_academic_year }, class_name: 'Section'
+  # has_many :current_sections, -> { current_academic_year }, class_name: 'Section'
 
   # A course has many evaluations through sections
   # A course has many bid_histories through sections
+
+  def self.current_sections
+    joins(:sections).where(sections: { academic_year: '2021-2022' })
+  end
 
   def max_five_evaluations
     evaluation_holder = []

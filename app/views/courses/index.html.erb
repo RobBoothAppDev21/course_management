@@ -1,5 +1,14 @@
 <h1>Courses</h1>
 
+<%= search_form_for @q do |f| %> <%#, html: { method: :post } do |f| %>
+  <%= f.search_field :title_or_number_cont, placeholder: 'Course title' %>
+  <%= f.search_field :sections_quarter_cont, placeholder: 'Quarter' %>
+
+  <%= f.submit %>
+<% end %>
+
+<hr>
+
 <div class='course_index'>
   <% @courses.each do |course| %>
     <div class='course_card'>
@@ -17,8 +26,12 @@
               </div>
               <div class='course_section_count_container'>
                 <div class='course_section_count_data'>
-                  <%= 
+                  <%# <%= 
                     link_to pluralize(course.current_sections.count, 'section'), 
+                    course_sections_url(course) 
+                  %>
+                  <%= 
+                    link_to pluralize(course.sections.current_academic_year.count, 'section'), 
                     course_sections_url(course) 
                   %>
                 </div>
