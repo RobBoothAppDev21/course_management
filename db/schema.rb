@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_16_213708) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_19_163727) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -40,6 +40,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_16_213708) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "section_id"
+    t.text "searchable"
     t.index ["section_id"], name: "index_bid_histories_on_section_id"
   end
 
@@ -51,6 +52,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_16_213708) do
     t.datetime "updated_at", null: false
     t.integer "sections_count"
     t.integer "credits", default: 0
+    t.text "searchable"
   end
 
   create_table "evaluations", force: :cascade do |t|
@@ -74,6 +76,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_16_213708) do
     t.datetime "updated_at", null: false
     t.bigint "section_id"
     t.bigint "instructor_id"
+    t.text "searchable"
     t.index ["instructor_id"], name: "index_evaluations_on_instructor_id"
     t.index ["section_id"], name: "index_evaluations_on_section_id"
   end
@@ -97,6 +100,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_16_213708) do
     t.string "academic_area", default: "TBD"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "searchable"
   end
 
   create_table "sections", force: :cascade do |t|
@@ -123,6 +127,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_16_213708) do
     t.datetime "updated_at", null: false
     t.string "academic_year"
     t.bigint "course_id"
+    t.text "searchable"
     t.index ["course_id"], name: "index_sections_on_course_id"
   end
 
