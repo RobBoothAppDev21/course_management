@@ -13,10 +13,10 @@ class CoursesController < ApplicationController
     # @q = Course.joins(:sections).where(sections: { academic_year: '2021-2022' }).ransack(params[:q])
     # @courses = @q.result(distinct: true)
     # @q = Course.ransack(params[:q])
-    @q =  Course.ransack(params[:q])
+    @q = Course.ransack(params[:q])
     @courses = @q.result(distinct: true).includes(:sections).current_sections
     # q = params[:q]
-    # @courses = Course.ransack(title_cont: q).result(distinct: true)
+    # @courses = Course.ransack(searchable_cont: q).result(distinct: true)
     # sections_id = Section.ransack(quarter_cont: q).result(distinct: true).pluck(:id)
   end
 

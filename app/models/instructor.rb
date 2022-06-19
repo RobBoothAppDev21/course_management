@@ -20,4 +20,12 @@ class Instructor < ApplicationRecord
 
   # validates :email, unique: true
   validates :first_name, :last_name, presence: true
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
+  def set_searchable
+    self.searchable = [first_name, last_name, full_name].join(' ')
+  end
 end

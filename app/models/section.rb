@@ -28,6 +28,8 @@
 #  course_id     :bigint
 #
 class Section < ApplicationRecord
+  # before_save :set_searchable
+
   QUARTER_SORT = %w(Summer Spring Winter Autumn)
   ACADEMIC_YEAR_SORT = %w(2021-2022 2020-2021 2019-2020 2018-2019 2017-2018 2016-2017)
 
@@ -55,21 +57,56 @@ class Section < ApplicationRecord
     name_holder.join(', ')
   end
 
+  def course_section
+    "#{course.number}-#{section}"
+  end
+
   def meeting_days
     weekdays = %i[sunday monday tuesday wednesday thursday friday saturday]
     days_taught = []
     weekdays.each do |day|
       if self.send(day)
-        day_as_string = day.to_s.capitalize
-        abbrev_day = case day_as_string
-        when 'Tuesday' || 'Thursday'
-          day_as_string[0..3] + '.'
-        else
-          day_as_string[0..2] + '.'
-        end
-        days_taught << abbrev_day
+        days_taught << day.to_s.capitalize
       end
-    end 
-    days_taught.empty? ? 'TBD' : days_taught.join(', ')
+    end
+    days_taught
+  end
+
+  def time_of_day_start # Morning, Afternoon, Evening
+    unless start_time.nil?
+      if start_time.include? 'AM'
+        return 'Morning'
+      elsif start_time.include? 'PM'
+        start = start_time.match(/(\d{2})/)[0].to_i
+        case start
+        when ((5..8).include? start)
+          'Evening'
+        else
+          'Afternoon'
+        end
+      end
+    end
+  end
+
+  def abbrev_meeting_days
+    meet_days = meeting_days
+    if !meeting_days.empty?
+      abbrev_days = []
+      meet_days.each do |day|
+        abbrev_day = case day
+        when 'Tuesday' || 'Thursday'
+          abbrev_days << day[0..3] + '.'
+        else
+          abbrev_days << day[0..2] + '.'
+        end
+      end
+    end
+    abbrev_days.empty? ? 'TBD' : abbrev_days.join(', ')
+  end
+
+  def set_searchable
+    self.searchable = [course.title, course_section, year, quarter, program, academic_year, 
+                       meeting_days, start_time, end_time, time_of_day_start, building, 
+                       list_instructors].flatten.join(' ').squeeze(' ')
   end
 end

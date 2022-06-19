@@ -12,6 +12,7 @@
 #  credits        :integer          default(0)
 #
 class Course < ApplicationRecord
+  # before_save :set_searchable
   has_many :sections # , -> { where academic_year: '2021-2022' }
 
   # has_many :current_sections, -> { current_academic_year }, class_name: 'Section'
@@ -19,8 +20,8 @@ class Course < ApplicationRecord
   # A course has many evaluations through sections
   # A course has many bid_histories through sections
 
-  def self.current_sections
-    joins(:sections).where(sections: { academic_year: '2021-2022' })
+  def self.current_sections(academic_period = '2021-2022')
+    joins(:sections).where(sections: { academic_year: academic_period })
   end
 
   # def self.quarter_year_sections(section_ids)
@@ -57,5 +58,10 @@ class Course < ApplicationRecord
       sum_of_overall_score += evaluation.hours_committed
     end
     sum_of_overall_score / num_of_evaluations
+  end
+
+  def set_searchable
+    self.searchable = [title, number, credits].join(' ') # , calculate_average_hours_committed,
+                      #  calculate_average_overall_score].join(' ')
   end
 end

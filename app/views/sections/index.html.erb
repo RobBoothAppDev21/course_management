@@ -48,7 +48,7 @@
               Day(s)
             </div>
             <div class='section_day_data2'>
-              <%= section.meeting_days %>
+              <%= section.abbrev_meeting_days %>
             </div>
           </div>
           <div class='section_start_time_container2'>
@@ -160,7 +160,7 @@
             <%= section.quarter[0..2].upcase %><%= section.year[-2..]%>  
           </div>
           <div class='section_bhe_day'>
-            <%= section.meeting_days %>
+            <%= section.abbrev_meeting_days %>
           </div>
           <div class='section_bhe_time'>
             <%= section.start_time %> - <%= section.end_time %>
