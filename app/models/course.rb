@@ -23,6 +23,10 @@ class Course < ApplicationRecord
     joins(:sections).where(sections: { academic_year: '2021-2022' })
   end
 
+  # def self.quarter_year_sections(section_ids)
+  #   joins(:sections).where(sections: { id: section_ids})
+  # end
+
   def max_five_evaluations
     evaluation_holder = []
     sections.sorted_sections.each do |section|

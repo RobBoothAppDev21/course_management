@@ -44,6 +44,8 @@ class Section < ApplicationRecord
   scope :sorted_sections, -> { sort_academic_year.sort_quarter.order(section: :asc)}
   scope :current_academic_year, -> { where academic_year: '2021-2022' }
 
+  # scope :search_instructor, -> () { }
+
   def list_instructors
     name_holder = []
     instructor_array = instructors

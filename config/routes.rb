@@ -4,9 +4,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   resources :courses, only: %i[index show] do
-    # collection do
-    #   match 'search' => 'courses#index', via: [:get, :post], as: :search
-    # end
+    collection do
+      match 'search' => 'courses#index', via: [:get, :post], as: :search
+    end
     resources :sections, only: %i[index show] do
     end
   end
