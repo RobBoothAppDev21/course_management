@@ -1,7 +1,3 @@
-<%# <%= form_tag search_courses_path, method: :get do %>
-  <%# <%= text_field_tag :q, params[:q] %>
-<%# <% end %>
-
 <div class='search_container'>
   <div class='search_top_row_container'>
     <div class='search_bar'>
@@ -92,10 +88,19 @@
 </div>
 
 <hr>
-<%= search_form_for @q do |f| %>
-   <%= f.search_field :searchable_or_sections_searchable_cont, placeholder: 'Course title' %>
-   <%= f.submit %>
- <% end%>
+
+<%= form_with url: search_courses_path, method: :get do |f| %>
+  <%= f.text_field :search_bar, placeholder: 'Course Search' %>
+  <%= f.text_field :academic_year, placeholder: 'Academic Year' %>
+  <%= f.text_field :program, placeholder: 'Program' %>
+  <%= f.text_field :quarter, placeholder: 'Quarter' %>
+  <%= f.text_field :course_area %>
+  <%= f.text_field :meet_days %>
+  <%= f.text_field :start_time %>
+  <%= f.text_field :credits %>
+  <%= f.text_field :concentration %>
+  <%= f.submit %>
+<% end %>
 <%# <%# <div>
  <%# <%= search_form_for @q do |f| %>
    <%# <%= f.search_field :title_or_number_cont, placeholder: 'Course title' %>

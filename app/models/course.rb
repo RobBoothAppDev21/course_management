@@ -24,9 +24,14 @@ class Course < ApplicationRecord
     joins(:sections).where(sections: { academic_year: academic_period })
   end
 
-  # def self.quarter_year_sections(section_ids)
-  #   joins(:sections).where(sections: { id: section_ids})
-  # end
+  # Parameters: {"q"=>{"searchable_or_sections_searchable_cont"=>"", 
+  # "sections_academic_year_cont"=>"", "sections_program_cont"=>"",
+  # "sections_quarter_cont"=>"", "sections_sunday_eq"=>"", "sections_monday_cont"=>"", 
+  # "sections_start_time_cont"=>"", "sections_credits_cont"=>"", "sections_tuesday_cont"=>""}, "commit"=>"Search"}
+  def self.clean_params(parameters_hash)
+    search_params = parameters_hash[:q]
+    search_params[0] unless search_params.nil?
+  end
 
   def max_five_evaluations
     evaluation_holder = []
