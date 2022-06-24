@@ -82,4 +82,36 @@ class Course < ApplicationRecord
     self.searchable = [title, number, credits].join(' ') # , calculate_average_hours_committed,
                       #  calculate_average_overall_score].join(' ')
   end
+  
+  ransacker :academic_year do
+    Arel.sql("array_to_string(sections.academic_year, ',')")
+  end
+
+  ransacker :quarter do
+    Arel.sql("array_to_string(sections.quarter, ',')")
+  end
+
+  ransacker :program do
+    Arel.sql("array_to_string(sections.program, ',')")
+  end
+
+  ransacker :searchable_course_areas_list do
+    Arel.sql("array_to_string(searchable_course_areas_list, ',')")
+  end
+
+  ransacker :searchable_meet_days_list do
+    Arel.sql("array_to_string(sections.searchable_meet_days_list, ',')")
+  end
+
+  ransacker :searchable_time_of_day_list do
+    Arel.sql("array_to_string(sections.searchable_time_of_day_list, ',')")
+  end
+
+  # ransacker :credits do
+  #   Arel.sql("array_to_string(courses.credits, ',')")
+  # end
+  
+  ransacker :searchable_concentrations_list do
+    Arel.sql("array_to_string(searchable_concentrations_list, ',')")
+  end
 end

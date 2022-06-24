@@ -8,41 +8,8 @@ class CoursesController < ApplicationController
   end
   
   def index
-    # @courses = Course.all.order(:title)
-    # @courses = Course.joins(:sections).where(sections: { academic_year: '2021-2022' }).distinct
-    # @q = Course.joins(:sections).where(sections: { academic_year: '2021-2022' }).ransack(params[:q])
-    # @courses = @q.result(distinct: true)
-    # q = Course.clean_params(params[:q])
-    # @sp = Course.clean_params(params)
-    @q = Course.ransack({ 
-      searchable_or_sections_searchable_cont: params[:search_bar],
-      sections_program: params[:quarter]
-      })
+    @q = Course.ransack(params[:q])
     @courses = @q.result(distinct: true).includes(:sections).current_sections
-    # q = params[:q]
-    # @courses = Course.ransack(searchable_or_sections_searchable_cont: q)
-              #  .result(distinct: true)
-              #  .includes(:sections)
-              #  .current_sections
-    # sections_id = Section.ransack(quarter_cont: q).result(distinct: true).pluck(:id)
-    # shared_context = Ransack::Context.for(Course)
-    # q = params[:q]
-    # search_bar = Course.ransack(
-    #   { searchable_or_sections_searchable_cont: q }, shared_context
-    # )
-
-    # q2 = params[:p]
-    # search_day = Course.ransack(
-    #   { searchable_or_sections_searchable_cont: q2 }, shared_context
-    # )
-
-    # shared_conditions = [search_bar, search_day].map { |search| 
-    #   Ransack::Visitor.new.accept(search.base)
-    # }
-
-    # Course.joins(shared_context.join_sources)
-    #   .where(shared_conditions.reduce(&:and))
-    #   .to_sql
   end
 
   def show

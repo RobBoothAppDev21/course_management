@@ -89,30 +89,66 @@
 
 <hr>
 
-<%= form_with url: search_courses_path, method: :get do |f| %>
-  <%= f.text_field :search_bar, placeholder: 'Course Search' %>
-  <%= f.text_field :academic_year, placeholder: 'Academic Year' %>
-  <%= f.text_field :program, placeholder: 'Program' %>
-  <%= f.text_field :quarter, placeholder: 'Quarter' %>
-  <%= f.text_field :course_area %>
-  <%= f.text_field :meet_days %>
-  <%= f.text_field :start_time %>
-  <%= f.text_field :credits %>
-  <%= f.text_field :concentration %>
-  <%= f.submit %>
-<% end %>
-<%# <%# <div>
- <%# <%= search_form_for @q do |f| %>
-   <%# <%= f.search_field :title_or_number_cont, placeholder: 'Course title' %>
-   <%# <%= f.search_field :sections_program_cont, placeholder: 'program' %>
-   <%# <%= f.search_field :sections_quarter_cont, placeholder: 'Quarter' %>
-   <%# <%= f.search_field :sections_title_cont, placeholder: 'Day' %>
-   <%# <%= f.search_field :sections_title_cont, placeholder: 'Course Area' %>
-   <%# <%= f.search_field :credits_cont, placeholder: 'Credits' %>
-   <%# <%= f.search_field :title_cont, placeholder: 'Lab' %>
-   <%# <%= f.search_field :sections_start_time_cont, placeholder: 'Start Time' %>
-   <%# <%= f.search_field :title_cont, placeholder: 'Concentration' %>
+<div>
+ <%= search_form_for @q do |f| %>
 
-   <%# <%= f.submit %>
- <%# <% end %>
-<%# </div> %>
+  <%= f.search_field :searchable_or_sections_searchable_cont, placeholder: 'Search Courses!!' %>
+  <%= f.select :sections_academic_year_cont_any,
+      options_for_select([['2022-2023', '2022-2023'],
+                          ['2021-2022', '2021-2022']]),
+      {},
+      { multiple: true } %>
+  
+  <%= f.select :sections_program_cont_any,
+      options_for_select([['Full-Time MBA', 'Full-Time MBA'],
+                          ['Evening MBA',   'Evening MBA'],
+                          ['Weekend MBA',   'Weekend MBA'],
+                          ['PhD Program',   'PhD Program']]),
+      {},
+      { multiple: true } %>
+  
+  <%= f.select :sections_quarter_cont_any,
+      options_for_select([['Autumn', 'Autumn'],
+                          ['Winter', 'Winter'],
+                          ['Spring', 'Spring'],
+                          ['Summer', 'Summer']]),
+      {},
+      { multiple: true } %>
+
+  <%= f.select :searchable_course_areas_list_cont_any,
+      options_for_select([['Course Areas',  '']]),
+      {},
+      { multiple: true } %>
+
+  <%= f.select :sections_searchable_meet_days_list_cont_any,
+      options_for_select([['Monday',    'Monday'],
+                          ['Tuesday',   'Tuesday'],
+                          ['Wednesday', 'Wednesday'],
+                          ['Thursday',  'Thursday'],
+                          ['Friday',    'Friday'],
+                          ['Saturday',  'Saturday']]),
+      {},
+      { multiple: true } %>
+
+  <%= f.select :sections_searchable_time_of_day_list_cont_any,
+      options_for_select([['Morning',   'Morning'],
+                          ['Afternoon', 'Afternoon'],
+                          ['Evening',   'Evening']]),
+      {},
+      { multiple: true } %>
+
+  <%= f.select :credits_eq,
+      options_for_select([50, 100]),
+      {},
+      { multiple: true } %>
+
+  <%= f.select :searchable_concentrations_list_cont_any,
+      options_for_select([['Concentrations',  '']]),
+      {},
+      { multiple: true } %>
+
+  <%= f.submit %>
+  <% end %>
+</div>
+
+<%= @courses.count %>
