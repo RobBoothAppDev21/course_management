@@ -71,6 +71,13 @@ class Course < ApplicationRecord
     sum_of_overall_score / num_of_evaluations
   end
 
+  def calculate_ratio_overall_hours
+    return 0 if calculate_average_hours_committed == 0 || calculate_average_overall_score == 0
+    return 0 if calculate_average_hours_committed.nil? || calculate_average_overall_score.nil?
+    return 0 if calculate_average_hours_committed == 'N/A' || calculate_average_overall_score == 'N/A'
+    ratio = calculate_average_overall_score / calculate_average_hours_committed
+  end
+
   def set_searchable
     self.searchable = [title, number, credits].join(' ') # , calculate_average_hours_committed,
                       #  calculate_average_overall_score].join(' ')
