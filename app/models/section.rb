@@ -2,30 +2,33 @@
 #
 # Table name: sections
 #
-#  id            :bigint           not null, primary key
-#  title         :string
-#  number        :string
-#  section       :string
-#  year          :string
-#  quarter       :string
-#  sunday        :boolean          default(FALSE)
-#  monday        :boolean          default(FALSE)
-#  tuesday       :boolean          default(FALSE)
-#  wednesday     :boolean          default(FALSE)
-#  thursday      :boolean          default(FALSE)
-#  friday        :boolean          default(FALSE)
-#  saturday      :boolean          default(FALSE)
-#  start_time    :string
-#  end_time      :string
-#  building      :string           default("TBA")
-#  room          :string           default("TBA")
-#  credits       :integer          default(100)
-#  syllabus      :string
-#  program       :string
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
-#  academic_year :string
-#  course_id     :bigint
+#  id                          :bigint           not null, primary key
+#  title                       :string
+#  number                      :string
+#  section                     :string
+#  year                        :string
+#  quarter                     :string
+#  sunday                      :boolean          default(FALSE)
+#  monday                      :boolean          default(FALSE)
+#  tuesday                     :boolean          default(FALSE)
+#  wednesday                   :boolean          default(FALSE)
+#  thursday                    :boolean          default(FALSE)
+#  friday                      :boolean          default(FALSE)
+#  saturday                    :boolean          default(FALSE)
+#  start_time                  :string
+#  end_time                    :string
+#  building                    :string           default("TBA")
+#  room                        :string           default("TBA")
+#  credits                     :integer          default(100)
+#  syllabus                    :string
+#  program                     :string
+#  created_at                  :datetime         not null
+#  updated_at                  :datetime         not null
+#  academic_year               :string
+#  course_id                   :bigint
+#  searchable                  :text
+#  searchable_meet_days_list   :string
+#  searchable_time_of_day_list :string
 #
 class Section < ApplicationRecord
   # before_save :set_searchable

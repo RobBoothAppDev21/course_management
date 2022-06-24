@@ -23,6 +23,7 @@
 #  updated_at                           :datetime         not null
 #  section_id                           :bigint
 #  instructor_id                        :bigint
+#  searchable                           :text
 #
 require "test_helper"
 

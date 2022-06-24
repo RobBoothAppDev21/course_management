@@ -28,6 +28,7 @@
 #  created_at                          :datetime         not null
 #  updated_at                          :datetime         not null
 #  section_id                          :bigint
+#  searchable                          :text
 #
 require "test_helper"
 

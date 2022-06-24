@@ -12,6 +12,7 @@
 #  academic_area :string           default("TBD")
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  searchable    :text
 #
 require "test_helper"
 
