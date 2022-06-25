@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).on("ready turbo:load", function() {
   $('.js-search-multiple').select2();
   
   $(".js-search-academic-year").select2({
@@ -6,7 +6,7 @@ $(document).ready(function() {
       id: '',
       text: 'Academic Year'
     },
-    allowClear: false
+    allowClear: false,
   });
 
   $(".js-search-program").select2({
@@ -43,8 +43,4 @@ $(document).ready(function() {
       text: 'Credits'
     }
   });
-
-  $("form").on("submit", function() {
-    this.reset();
-  })
 });

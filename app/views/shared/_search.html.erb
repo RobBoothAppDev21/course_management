@@ -97,7 +97,10 @@
       options_for_select([['2022-2023', '2022-2023'],
                           ['2021-2022', '2021-2022']]),
       {},
-      { multiple: true } %>
+      { 
+        class: 'js-search-multiple js-search-academic-year',
+        multiple: true
+      } %>
   
   <%= f.select :sections_program_cont_any,
       options_for_select([['Full-Time MBA', 'Full-Time MBA'],
@@ -105,7 +108,10 @@
                           ['Weekend MBA',   'Weekend MBA'],
                           ['PhD Program',   'PhD Program']]),
       {},
-      { multiple: true } %>
+      { 
+        class: 'js-search-multiple js-search-program',
+        multiple: true
+      } %>
   
   <%= f.select :sections_quarter_cont_any,
       options_for_select([['Autumn', 'Autumn'],
@@ -113,12 +119,18 @@
                           ['Spring', 'Spring'],
                           ['Summer', 'Summer']]),
       {},
-      { multiple: true } %>
+      { 
+        class: 'js-search-multiple js-search-quarter',
+        multiple: true
+      } %>
 
   <%= f.select :searchable_course_areas_list_cont_any,
       options_for_select([['Course Areas',  '']]),
       {},
-      { multiple: true } %>
+      { 
+        class: 'js-search-multiple js-search-course_areas',
+        multiple: true
+      } %>
 
   <%= f.select :sections_searchable_meet_days_list_cont_any,
       options_for_select([['Monday',    'Monday'],
@@ -128,24 +140,36 @@
                           ['Friday',    'Friday'],
                           ['Saturday',  'Saturday']]),
       {},
-      { multiple: true } %>
+      { 
+        class: 'js-search-multiple js-search-meet-days-list',
+        multiple: true
+      } %>
 
   <%= f.select :sections_searchable_time_of_day_list_cont_any,
       options_for_select([['Morning',   'Morning'],
                           ['Afternoon', 'Afternoon'],
                           ['Evening',   'Evening']]),
       {},
-      { multiple: true } %>
+      { 
+        class: 'js-search-multiple js-search-time-of-day-list',
+        multiple: true
+      } %>
 
   <%= f.select :credits_eq,
       options_for_select([50, 100]),
       {},
-      { multiple: true } %>
+      { 
+        class: 'js-search-multiple js-search-credits',
+        multiple: true
+      } %>
 
   <%= f.select :searchable_concentrations_list_cont_any,
       options_for_select([['Concentrations',  '']]),
       {},
-      { multiple: true } %>
+      { 
+        class: 'js-search-multiple js-search-concentrations-list',
+        multiple: true
+      } %>
 
   <%= f.submit %>
   <% end %>
@@ -153,6 +177,3 @@
 
 <%= @courses.count %>
 <hr>
-<%= @courses_query.each do |hash| %>
-  <%= p hash %>
-<% end %>
