@@ -8,6 +8,7 @@ class CoursesController < ApplicationController
   end
   
   def index
+    @courses_query = params[:q]
     @q = Course.ransack(params[:q])
     @courses = @q.result(distinct: true).includes(:sections).current_sections
   end

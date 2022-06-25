@@ -152,3 +152,7 @@
 </div>
 
 <%= @courses.count %>
+<hr>
+<%= @courses_query.each do |hash| %>
+  <%= p hash %>
+<% end %>
