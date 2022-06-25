@@ -1,179 +1,110 @@
-<div class='search_container'>
-  <div class='search_top_row_container'>
-    <div class='search_bar'>
-      Search Courses Here!!!
+<div class='select2-search-containter'>
+  <%= search_form_for @q, html: { class: 'search-form-container'} do |f| %>
+    <div class='search-bar-container'>
+      <%= f.search_field :searchable_or_sections_searchable_cont,
+            placeholder: 'Search Courses!!',
+            class: 'search-bar2' %>
     </div>
-  </div>
-  <div class='search_middle_row_container'>
-    <div class='search_filter_button_container academic_year_filter'>
-      <div class='filter_text academic_year_text'>
-        Academic Year
-      </div>
-      <div class='filter_arrow academic_year_icon'>
-        &#8964 
-      </div>
+    <div class='search-year-program-quarter-container'>
+      <%= f.select :sections_academic_year_cont_any,
+          options_for_select([['2022-2023', '2022-2023'],
+                              ['2021-2022', '2021-2022']]),
+          {},
+          { 
+            class: 'js-filter-multiple js-filter-academic-year',
+            multiple: true
+          } %>
+      
+      <%= f.select :sections_program_cont_any,
+          options_for_select([['Full-Time', 'Full-Time MBA'],
+                              ['Evening',   'Evening MBA'],
+                              ['Weekend',   'Weekend MBA'],
+                              ['PhD',       'PhD Program']]),
+          {},
+          { 
+            class: 'js-filter-multiple js-filter-program',
+            multiple: true
+          } %>
+      
+      <%= f.select :sections_quarter_cont_any,
+          options_for_select([['Autumn', 'Autumn'],
+                              ['Winter', 'Winter'],
+                              ['Spring', 'Spring'],
+                              ['Summer', 'Summer']]),
+          {},
+          { 
+            class: 'js-filter-multiple js-filter-quarter',
+            multiple: true
+          } %>
     </div>
-    <div class='search_filter_button_container program_filter'>
-      <div class='filter_text program_text'>
-        Program
-      </div>
-      <div class='filter_arrow program_icon'>
-        &#8964 
-      </div>
-    </div>
-    <div class='search_filter_button_container quarter_filter'>
-      <div class='filter_text quarter_text'>
-        Quarter
-      </div>
-      <div class='filter_arrow quarter_icon'>
-        &#8964 
-      </div>
-    </div>
-    <div class='search_filter_button_container course_area_filter'>
-      <div class='filter_text course_area_text'>
-        Course Area
-      </div>
-      <div class='filter_arrow course_area_icon'>
-        &#8964 
-      </div>
-    </div>
-    <div class='search_filter_button_container sort_container'>
-      <div class='search_sort_text'>
-        Sort
-      </div>
-      <div class='search_sort_arrows'>
-        &#8645
-      </div>
-    </div>
-  </div>
-  <div class='search_bottom_row_container'>
-    <div class='search_filter_button_container day_filter'>
-      <div class='filter_text day_text'>
-        Day
-      </div>
-      <div class='filter_arrow day_icon'>
-        &#8964 
-      </div>
-    </div>
-    <div class='search_filter_button_container start_time_filter'>
-      <div class='filter_text start_time_text'>
-        Start Time
-      </div>
-      <div class='filter_arrow start_time_icon'>
-        &#8964 
-      </div>
-    </div>
-    <div class='search_filter_button_container credits_filter'>
-      <div class='filter_text credits_text'>
-        Credits
-      </div>
-      <div class='filter_arrow credits_icon'>
-        &#8964 
-      </div>
-    </div>
-    <div class='search_filter_button_container concentration_filter'>
-      <div class='filter_text concentration_text'>
-        Concentration
-      </div>
-      <div class='filter_arrow concentration_icon'>
-        &#8964 
-      </div>
-    </div>
-    <div class='search_filter_button_container clear_container'>
-      <div class='search_clear_button'>
-        CLEAR ALL
-      </div>
-    </div>
-  </div>
-</div>
+    <div class='filter-day-time-container'>
+      <%= f.select :sections_searchable_meet_days_list_cont_any,
+          options_for_select([['Sunday',    'Sunday'],
+                              ['Monday',    'Monday'],
+                              ['Tuesday',   'Tuesday'],
+                              ['Wednesday', 'Wednesday'],
+                              ['Thursday',  'Thursday'],
+                              ['Friday',    'Friday'],
+                              ['Saturday',  'Saturday']]),
+          {},
+          { 
+            class: 'js-filter-multiple js-filter-meet-days',
+            multiple: true
+          } %>
 
-<hr>
+      <%= f.select :sections_searchable_time_of_day_list_cont_any,
+          options_for_select([['Morning',   'Morning'],
+                              ['Afternoon', 'Afternoon'],
+                              ['Evening',   'Evening']]),
+          {},
+          { 
+            class: 'js-filter-multiple js-filter-time-of-day',
+            multiple: true
+          } %>
 
-<div>
- <%= search_form_for @q do |f| %>
+      <%= f.select :credits_eq_any,
+          options_for_select([['50 Credits', 50], ['100 Credits', 100]]),
+          {},
+          { 
+            class: 'js-filter-multiple js-filter-credits',
+            multiple: true
+          } %>
+    </div>
+    <div class='filter-course-areas-concentrations-container'>
+      <%= f.select :searchable_course_areas_list_cont_any,
+          options_for_select([['Course Areas',  '']]),
+          {},
+          { 
+            class: 'js-filter-multiple js-filter-course_areas',
+            multiple: true
+          } %>
 
-  <%= f.search_field :searchable_or_sections_searchable_cont, placeholder: 'Search Courses!!' %>
-  <%= f.select :sections_academic_year_cont_any,
-      options_for_select([['2022-2023', '2022-2023'],
-                          ['2021-2022', '2021-2022']]),
-      {},
-      { 
-        class: 'js-search-multiple js-search-academic-year',
-        multiple: true
-      } %>
-  
-  <%= f.select :sections_program_cont_any,
-      options_for_select([['Full-Time MBA', 'Full-Time MBA'],
-                          ['Evening MBA',   'Evening MBA'],
-                          ['Weekend MBA',   'Weekend MBA'],
-                          ['PhD Program',   'PhD Program']]),
-      {},
-      { 
-        class: 'js-search-multiple js-search-program',
-        multiple: true
-      } %>
-  
-  <%= f.select :sections_quarter_cont_any,
-      options_for_select([['Autumn', 'Autumn'],
-                          ['Winter', 'Winter'],
-                          ['Spring', 'Spring'],
-                          ['Summer', 'Summer']]),
-      {},
-      { 
-        class: 'js-search-multiple js-search-quarter',
-        multiple: true
-      } %>
+      <%= f.select :searchable_concentrations_list_cont_any,
+          options_for_select([['Concentrations',  '']]),
+          {},
+          { 
+            class: 'js-filter-multiple js-filter-concentrations-list',
+            multiple: true
+          } %>
+    </div>
+    <div class='sort-container'>
+      <%= sort_link(@q, :searchable_avg_overall_score, 'Overall Score')%>
+      <%= sort_link(@q, :searchable_avg_hours_committed, 'Hours Committed')%>
+      <%= sort_link(@q, :searchable_ratio_overall_hours, 'High Score / Low Effort')%>
+      <%= 'Clear All Button' %>
+    </div>
+    <div class='search-submit-container'>
 
-  <%= f.select :searchable_course_areas_list_cont_any,
-      options_for_select([['Course Areas',  '']]),
-      {},
-      { 
-        class: 'js-search-multiple js-search-course_areas',
-        multiple: true
-      } %>
-
-  <%= f.select :sections_searchable_meet_days_list_cont_any,
-      options_for_select([['Monday',    'Monday'],
-                          ['Tuesday',   'Tuesday'],
-                          ['Wednesday', 'Wednesday'],
-                          ['Thursday',  'Thursday'],
-                          ['Friday',    'Friday'],
-                          ['Saturday',  'Saturday']]),
-      {},
-      { 
-        class: 'js-search-multiple js-search-meet-days-list',
-        multiple: true
-      } %>
-
-  <%= f.select :sections_searchable_time_of_day_list_cont_any,
-      options_for_select([['Morning',   'Morning'],
-                          ['Afternoon', 'Afternoon'],
-                          ['Evening',   'Evening']]),
-      {},
-      { 
-        class: 'js-search-multiple js-search-time-of-day-list',
-        multiple: true
-      } %>
-
-  <%= f.select :credits_eq,
-      options_for_select([50, 100]),
-      {},
-      { 
-        class: 'js-search-multiple js-search-credits',
-        multiple: true
-      } %>
-
-  <%= f.select :searchable_concentrations_list_cont_any,
-      options_for_select([['Concentrations',  '']]),
-      {},
-      { 
-        class: 'js-search-multiple js-search-concentrations-list',
-        multiple: true
-      } %>
-
-  <%= f.submit %>
+      <%= f.submit %>
+    </div>
   <% end %>
 </div>
 
 <%= @courses.count %>
 <hr>
+
+<% unless @courses_query.nil? %>
+  <% @courses_query.each do |hash| %>
+    <%= p hash %>
+  <% end %>
+<% end %>
